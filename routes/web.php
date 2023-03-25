@@ -17,5 +17,5 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
-
-Route::get('/Home', 'HomeController@index');
+Route::get('/Findjob', 'FindjobController@index');
+Route::get('/', 'HomeController@index');

@@ -12,7 +12,7 @@
         <nav class="container mx-auto px-10 py-4">
             <div class="flex items-center justify-between">
                 <div>
-                    <a href="#" class="text-gray-800 text-xl font-bold hover:text-gray-700">JobMatchCV</a>
+                    <img src="/storage/app/public/images/Logo.png'" alt="JobMatchCv" class="h-12">
                 </div>
                 <div class="flex items-center">
                     <div class="hidden md:block">
@@ -33,8 +33,8 @@
     </div>
     <div class="fixed  px-6 py-10 w-full bottom-0 left-0 ">
         <div class="flex justify-center py-4 space-x-9">
-        <a href="#" class="bg-[#2790CB] hover:bg-[#bcb8b4] text-white font-bold py-2 px-5 rounded-full">Find a job</a>
-        <a href="#" class="bg-[#3AB4F2] hover:bg-[#bcb8b4] text-white font-bold py-2 px-5 rounded-full">Offer a job</a>
+        <a href="#" class="bg-[#2790CB] hover:bg-[#3AB4F2] text-white font-bold py-2 px-5 rounded-full">Find a job</a>
+        <a href="#" class="bg-[#3AB4F2] hover:bg-[#2790CB] text-white font-bold py-2 px-5 rounded-full">Offer a job</a>
         </div>
     </div>
     <script src="{{ mix('js/app.js') }}"></script>
