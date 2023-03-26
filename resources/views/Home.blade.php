@@ -7,26 +7,8 @@
 @endsection
 
 @section('content')
-<body class="bg-[url('/storage/app/public/images/bg.jpg')] bg-cover bg-center font-Inconsolata">
-    <header>
-        <nav class="container mx-auto px-10 py-4">
-            <div class="flex items-center justify-between">
-                <div>
-                    <img src="/storage/app/public/images/Logo.png'" alt="JobMatchCv" class="h-12">
-                </div>
-                <div class="flex items-center">
-                    <div class="hidden md:block">
-                        <a href="#" class="text-gray-800 hover:text-gray-600 px-3 py-2 rounded-md text-lg font-medium">Home</a>
-                        <a href="#" class="text-gray-800 hover:text-gray-600 px-3 py-2 rounded-md text-lg font-medium">Candidates</a>
-                        <a href="#" class="text-gray-800 hover:text-gray-600 px-3 py-2 rounded-md text-lg font-medium">Jobs</a>
-                    </div>
-                    <div class="ml-4">
-                        <a href="#" class="text-white hover:text-gray-600 px-5 py-2 rounded-full text-m font-medium border-2 border-solid border-[#0081C9] ">Login</a>
-                    </div>
-                </div>
-            </div>
-        </nav>
-    </header>
+<body class="bg-[url('/public/images/bg.jpg')] bg-cover bg-center font-Inconsolata">
+    
     <div class="container mx-auto px-10 py-20">
         <h1 class="text-6xl  mb-6">Smart recruitment </h1>
         <h1 class="text-6xl text-[#0081C9]">starts with us.</h1>
