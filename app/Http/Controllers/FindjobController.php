@@ -13,4 +13,10 @@ class FindjobController extends Controller
             'offers' =>$offers
         ]);
     }
+    public function show($slug ){
+        $offer = Job::where('slug',$slug)->first();
+        return view ('show')->with([
+            'offer' =>$offer
+        ]);
+    }
 }

@@ -15,8 +15,8 @@
     </div>
     <div class="fixed  px-6 py-10 w-full bottom-0 left-0 ">
         <div class="flex justify-center py-4 space-x-9">
-        <a href="#" class="bg-[#2790CB] hover:bg-[#3AB4F2] text-white font-bold py-2 px-5 rounded-full">Find a job</a>
-        <a href="#" class="bg-[#3AB4F2] hover:bg-[#2790CB] text-white font-bold py-2 px-5 rounded-full">Offer a job</a>
+        <a href="{{ url('/Findjob') }}" class="bg-[#2790CB] hover:bg-[#3AB4F2] text-white font-bold py-2 px-5 rounded-full">Find a job</a>
+        <a href="{{route('offer.create') }}" class="bg-[#3AB4F2] hover:bg-[#2790CB] text-white font-bold py-2 px-5 rounded-full">Offer a job</a>
         </div>
     </div>
     <script src="{{ mix('js/app.js') }}"></script>

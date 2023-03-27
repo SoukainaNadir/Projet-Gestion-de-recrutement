@@ -23,9 +23,9 @@
                     </div>
                     <div class="flex items-center">
                         <div class="hidden md:block">
-                            <a href="#" class="text-gray-800 hover:text-gray-600 px-3 py-2 rounded-md text-lg font-medium">Home</a>
+                            <a href="{{ url('/') }}" class="text-gray-800 hover:text-gray-600 px-3 py-2 rounded-md text-lg font-medium">Home</a>
                             <a href="#" class="text-gray-800 hover:text-gray-600 px-3 py-2 rounded-md text-lg font-medium">Candidates</a>
-                            <a href="#" class="text-gray-800 hover:text-gray-600 px-3 py-2 rounded-md text-lg font-medium">Jobs</a>
+                            <a href="{{ url('/Findjob') }}" class="text-gray-800 hover:text-gray-600 px-3 py-2 rounded-md text-lg font-medium">Jobs</a>
                         </div>
                         <div class="ml-4">
                             <a href="#" class="text-white hover:text-gray-600 px-5 py-2 rounded-full text-m font-medium border-2 border-solid border-[#0081C9] ">Login</a>
