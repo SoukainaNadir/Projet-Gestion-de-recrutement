@@ -23,6 +23,9 @@ class JobFactory extends Factory
             'title' => $title,
             'slug' => Str::slug($title),
             'description' => $this->faker->text(),
+            'location' => $this->faker->text(),
+            'salary' => $this->faker->numberBetween(100, 10000),
+            'jobtype'=> $this-> faker->randomElement(['full-time', 'Part-time', 'Contract','Internship','Temporary']),
             'image' => $this->faker->imageUrl(640,480)
         ];
     }

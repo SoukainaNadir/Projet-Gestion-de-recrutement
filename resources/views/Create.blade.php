@@ -12,7 +12,7 @@
     <div class="max-w-4xl mx-auto bg-white rounded-xl shadow-md overflow-hidden m-20">
             <div class="p-8 md:container">
                 <div class="uppercase tracking-wide text-2xl font-bold mb-4">Post a Job</div>
-                    <form action="#" method="POST" class="mt-4">
+                    <form action="{{route('offer.store')}}" method="POST" class="mt-4">
                     @csrf
 
                     <div class="mt-4">

@@ -14,11 +14,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
 Route::get('/', 'HomeController@index');
 Route::get('/Findjob', 'FindjobController@index');
 Route::get('/offer/{id}', 'FindjobController@show')->name('offer.show');
 Route::get('/create/offer', 'HomeController@create')->name('offer.create');
+Route::get('/add/offer', 'FindjobController@store')->name('offer.store');

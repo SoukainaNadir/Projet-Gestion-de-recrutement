@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 class FindjobController extends Controller
 {
     public function index(){
+        $offers = Job::all();
         $offers =Job::paginate(6);
         return view ('FindJob')->with([
             'offers' =>$offers
@@ -19,4 +20,10 @@ class FindjobController extends Controller
             'offer' =>$offer
         ]);
     }
+
+    public function store(Request $request ){
+        dd($request->all());
+
+    }
+
 }

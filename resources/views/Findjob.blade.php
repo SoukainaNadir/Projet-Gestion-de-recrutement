@@ -16,7 +16,42 @@
                 <input type="text" class=" w-80 px-4 py-2 border border-gray-400 rounded-md mr-2" placeholder="Search jobs">
                 <button type="submit" class="bg-[#0081C9] text-white px-4 py-2 rounded-md">Search</button>
             </form>
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                <div class="container">
+                @foreach ($offers as $offer)
+                <div class=" container mx-auto bg-white rounded-xl shadow-md overflow-hidden my-16">
+                <div class="md:flex ">
+                    <div class="md:flex-shrink-0">
+                        <img class="h-48 w-full object-cover md:w-48" src="{{ asset($offer->image) }}" alt="Job">
+                    </div>
+                    <div class="p-8">
+                        <p class="uppercase tracking-wide text-sm text-indigo-500 font-semibold"> Type: {{ $offer->jobtype }}</p>
+                        <a href="#" class="block mt-1 text-lg leading-tight font-medium text-black hover:underline">{{ $offer->title }}</a>
+                        <p class="mt-2 text-gray-500">We are looking for an experienced {{ $offer->title }} to join our team.</p>
+                        <div class="mt-4">
+                            <h1 class="text-gray-600 font-semibold">Location:</h1>
+                            <div class="mt-1 text-gray-900">{{ Str::limit($offer->location)}}</div>
+                        </div>
+                        <div class="mt-4">
+                        <h1 class="text-gray-600 font-semibold">Salary:</h1>
+                        <p class="mt-1 text-gray-900">{{ $offer->salary }}$ per an</p>
+                        </div>
+                        <div class="mt-4">
+                            <h1 class="text-gray-600 font-semibold">Job Description:</h1>
+                            <p class="mt-1 text-gray-900">
+                                {{ Str::limit($offer->description)}}
+                            </p>
+                        </div>
+                        <div class="mt-8">
+                        <a href="{{ route('offer.show',$offer->slug) }}" class="inline-block bg-indigo-500 hover:bg-indigo-600 text-white py-2 px-4 rounded-lg">Apply Now</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+                
+                @endforeach
+            
+                </div>
+            {{-- <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
                 
                 @foreach ($offers as $offer)
                     <div class="bg-white overflow-hidden shadow-sm rounded-lg">
@@ -28,18 +63,21 @@
                         </div>
                     </div>
                 @endforeach
-            </div>
+            </div> --}}
+
+
+
+
+
+            
             <div class="flex justify-center ">
-                {{-- <div class="my-5 ">
-                    {{ $offers->links() }}
-                </div> --}}
                 <div class="flex justify-center items-center mt-8">
                     <div class="flex">      
                         @if ($offers->onFirstPage())
                             <span class="border border-gray-300 rounded-l px-3 py-2 bg-gray-200 cursor-not-allowed">&laquo;</span>
                         @else
                             <a href="{{ $offers->previousPageUrl() }}" class="border border-gray-300 rounded-l px-3 py-2 bg-gray-200 hover:bg-gray-300">&laquo;</a>
-                        @endif
+                        @endif 
                         
                         {{-- @foreach ($offers as $offer)
                             @if ($offer->url)
@@ -57,7 +95,7 @@
                     </div>
                 </div>
                 
-            </div>
+            </div> 
         </div>    
     </div>
 </body>    
