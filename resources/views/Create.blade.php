@@ -38,8 +38,8 @@
                         <input type="text" id="salary" name="salary" class="border border-gray-400 p-2 w-full">
                     </div>
                     <div class="mt-4">
-                        <label for="type" class="block text-gray-700 font-bold mb-2">Job Type</label>
-                        <select name="type" id="type" class="w-full border-gray-300 rounded-md py-2 px-3 focus:outline-none focus:border-blue-400" required>
+                        <label class="block text-gray-700 font-bold mb-2">Job Type</label>
+                        <select name="jobtype[]" id="jobtype" class="w-full border-gray-300 rounded-md py-2 px-3 focus:outline-none focus:border-blue-400" required>
                             <option value="full-time">Full-time</option>
                             <option value="part-time">Part-time</option>
                             <option value="contract">Contract</option>

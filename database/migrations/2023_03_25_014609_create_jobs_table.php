@@ -18,6 +18,7 @@ return new class extends Migration
             $table->text('description');
             $table->text('location');
             $table->integer('salary');
+            $table->text('jobtype');
             $table->enum('jobtype', ['full-time', 'Part-time', 'Contract','Internship','Temporary'])->default('full-time');
             $table->string('image');
             $table->timestamps();
