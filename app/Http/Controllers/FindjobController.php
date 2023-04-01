@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\JobRequest;
 use App\Models\Job;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
@@ -10,7 +11,7 @@ class FindjobController extends Controller
 {
     public function index(){
         $offers = Job::all();
-        $offers =Job::paginate(6);
+        $offers =Job::latest()->paginate(10);
         return view ('FindJob')->with([
             'offers' =>$offers
         ]);
@@ -22,17 +23,46 @@ class FindjobController extends Controller
         ]);
     }
 
-    public function store(Request $request ){
-
-        $offer = new Job();
-        $offer->title = $request->title;
-        $offer->slug = Str::slug($request->title);
-        $offer->description = $request->description;
-        $offer->location = $request->location;
-        $offer->salary = $request->input('salary'); 
-        $offer->jobtype = $request->jobtype;
-        $offer->image = "https://via.placeholder.com/640x480.png/00cc88?text=quia = new offer";
-        $offer->save(); 
+    public function store(JobRequest $request ){
         
+        Job::create([
+            'title'=>$request->title,
+            'description'=>$request->description,
+            'slug'=>Str::slug($request->title),
+            'location'=>$request->location,
+            'salary'=>$request->salary,
+            'jobtype'=>$request->jobtype,
+            'image'=> "https://via.placeholder.com/640x480.png/00cc88?text=quia = new offer",
+        ]);
+        return redirect()->route('offers')->with([
+            'success' =>'Congratulations! Your job offer has been added successfully'
+        ]);
     }
+
+    public function edit($slug){
+        $offer = Job::where('slug',$slug)->first();
+        return view ('edit')->with([
+            'offer' =>$offer
+        ]);
+    }
+
+    public function update(Request $request, $slug){
+        $offer = Job::where('slug',$slug)->first();
+        $offer->update([
+            'title'=>$request->title,
+            'description'=>$request->description,
+            'slug'=>Str::slug($request->title),
+            'location'=>$request->location,
+            'salary'=>$request->salary,
+            'jobtype'=>$request->jobtype,
+            'image'=> "https://via.placeholder.com/640x480.png/00cc88?text=quia = new offer",
+        ]);
+        return redirect()->route('offers')->with([
+            'success' =>'Congratulations! Your job offer has been updated successfully'
+        ]);
+    }
+
+
+
+
 }

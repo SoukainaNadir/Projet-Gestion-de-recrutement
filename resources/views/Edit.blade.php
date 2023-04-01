@@ -3,7 +3,7 @@
 
 
 @section('title')
-    Offer a Job
+    Update {{ $offer->title }}
 @endsection
 
 @section('content')
@@ -29,15 +29,13 @@
     @endif
     
 
-
-
-
     <div class="max-w-4xl mx-auto bg-white rounded-xl shadow-md overflow-hidden m-20">
             <div class="p-8 md:container">
-                <div class="uppercase tracking-wide text-2xl font-bold mb-4">Post a Job</div>
-                    <form action="{{route('offer.store')}}" method="POST" class="mt-4" name="form">
+                <div class="uppercase tracking-wide text-2xl font-bold mb-4">Update {{ $offer->title }}</div>
+                    <form action="{{route('offer.update',$offer->slug)}}" method="POST" class="mt-4" name="form">
                     @csrf
-
+                        @method('Put')
+                        
                     <div class="mt-4">
                         <label class="block text-gray-700 font-bold mb-2" for="photo">
                             Photo
@@ -46,22 +44,20 @@
                     </div>
                     <div>
                         <label for="title" class="block text-gray-700 font-bold mb-2">Title:</label>
-                        <input type="text" id="title" name="title" class="border border-gray-400 p-2 w-full" required>
-                        
+                        <input type="text" id="title" name="title" value ="{{ $offer->title }} "class="border border-gray-400 p-2 w-full" required>
                     </div>
                     <div class="mt-4">
                         <label for="description" class="block text-gray-700 font-bold mb-2">Description:</label>
-                        <textarea id="description" name="description" class="border border-gray-400 p-2 w-full" required></textarea>
-               
+                        <textarea id="description" name="description" class="border border-gray-400 p-2 w-full" required>{{ $offer->description }}</textarea>
                     </div>
                     <div class="mt-4">
                         <label for="location" class="block text-gray-700 font-bold mb-2">Location:</label>
-                        <input type="text" id="location" name="location" class="border border-gray-400 p-2 w-full" required>
+                        <input type="text" id="location" name="location" class="border border-gray-400 p-2 w-full" value ="{{ $offer->location }}" required>
                         <div id="locationError" class="text-red-500 mt-2"></div>
                     </div>
                     <div class="mt-4">
                         <label for="salary" class="block text-gray-700 font-bold mb-2">Salary:</label>
-                        <input type="text" id="salary" name="salary" class="border border-gray-400 p-2 w-full">
+                        <input type="text" id="salary" name="salary" class="border border-gray-400 p-2 w-full" value ="{{ $offer->salary }}">
                     </div>
                     <div class="mt-4">
                         <label class="block text-gray-700 font-bold mb-2">Job Type</label>
@@ -75,7 +71,7 @@
                     </div>
                     <div class="my-4 float-right">
                         <button onclick ="displayError" type="submit" class="bg-[#0081C9] hover:bg-[#3AB4F2] text-white font-bold py-3 px-8 rounded">
-                        Add Job
+                        Update job
                         </button>
                     </div>
                 </form>
