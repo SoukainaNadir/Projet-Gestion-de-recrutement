@@ -64,13 +64,13 @@
                         <input type="text" id="salary" name="salary" class="border border-gray-400 p-2 w-full">
                     </div>
                     <div class="mt-4">
-                        <label class="block text-gray-700 font-bold mb-2">Job Type</label>
+                        <label class="block text-gray-700 font-bold mb-2 ">Job Type</label>
                         <select name="jobtype" id="jobtype" class="w-full border-gray-300 rounded-md py-2 px-3 focus:outline-none focus:border-blue-400" required>
-                            <option value="full-time">Full-time</option>
-                            <option value="part-time">Part-time</option>
-                            <option value="contract">Contract</option>
-                            <option value="internship">Internship</option>
-                            <option value="temporary">Temporary</option>
+                            <option value="" disabled selected>Choose option</option>
+                            <option value="Full-time" {{ $offer->jobtype == 'Full-time' ? 'selected' : '' }}>Full-time</option>
+                            <option value="Part-time" {{ $offer->jobtype == 'Part-time' ? 'selected' : '' }}>Part-time</option>
+                            <option value="Freelance" {{ $offer->jobtype == 'Freelance' ? 'selected' : '' }}>Freelance</option>
+                            <option value="Internship" {{ $offer->jobtype == 'Internship' ? 'selected' : '' }}>Internship</option>
                         </select>
                     </div>
                     <div class="my-4 float-right">
@@ -91,23 +91,18 @@
 
 @if ($errors->any())
 <script>
-    $(document).ready(function() {
-        var errorMsg = "Your form contains some errors:\n\n";
-        @foreach ($errors->all() as $error)
-        errorMsg += "- {{ $error }}\n";
-        @endforeach
-        alert(errorMsg);
-    });
-
-
-
+    
 
 const closeButton = document.querySelector('#close-button');
 const alertPanel = document.querySelector('#error-msg');
-
-
 closeButton.addEventListener('click', () => {
 alertPanel.classList.add('hidden');
+});
+
+$(document).ready(function() {
+  // When the page is loaded, show the alert message
+    var jobtype = $('select[name="jobtype"]').val();
+    alert('You have selected ' + jobtype + ' as the job type.');
 });
 
 

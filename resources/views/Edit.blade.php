@@ -24,8 +24,6 @@
             </svg>
         </span>
     </div>
-
-
     @endif
     
 
@@ -62,10 +60,10 @@
                     <div class="mt-4">
                         <label class="block text-gray-700 font-bold mb-2">Job Type</label>
                         <select name="jobtype" id="jobtype" class="w-full border-gray-300 rounded-md py-2 px-3 focus:outline-none focus:border-blue-400" required>
-                            <option value="full-time">Full-time</option>
                             <option value="part-time">Part-time</option>
                             <option value="contract">Contract</option>
                             <option value="internship">Internship</option>
+                            <option value="full-time">Full-time</option>
                             <option value="temporary">Temporary</option>
                         </select>
                     </div>
@@ -87,16 +85,6 @@
 
 @if ($errors->any())
 <script>
-    $(document).ready(function() {
-        var errorMsg = "Your form contains some errors:\n\n";
-        @foreach ($errors->all() as $error)
-        errorMsg += "- {{ $error }}\n";
-        @endforeach
-        alert(errorMsg);
-    });
-
-
-
 
 const closeButton = document.querySelector('#close-button');
 const alertPanel = document.querySelector('#error-msg');

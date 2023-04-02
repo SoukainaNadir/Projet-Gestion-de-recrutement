@@ -63,7 +63,7 @@
                 @endforeach
             
                 </div>
-            
+
             <div class="flex justify-center ">
                 <div class="flex justify-center items-center mt-8">
                     <div class="flex">      

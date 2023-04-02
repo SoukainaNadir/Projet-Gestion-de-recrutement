@@ -22,9 +22,14 @@ class FindjobController extends Controller
             'offer' =>$offer
         ]);
     }
+    public function showOffer($id)
+{
+    $offer = Job::findOrFail($id);
+    return view('offers.show', compact('offer'));
+}
 
-    public function store(JobRequest $request ){
-        
+    public function store(JobRequest $request){
+
         Job::create([
             'title'=>$request->title,
             'description'=>$request->description,
@@ -34,9 +39,11 @@ class FindjobController extends Controller
             'jobtype'=>$request->jobtype,
             'image'=> "https://via.placeholder.com/640x480.png/00cc88?text=quia = new offer",
         ]);
+
         return redirect()->route('offers')->with([
             'success' =>'Congratulations! Your job offer has been added successfully'
         ]);
+        
     }
 
     public function edit($slug){
@@ -56,6 +63,8 @@ class FindjobController extends Controller
             'salary'=>$request->salary,
             'jobtype'=>$request->jobtype,
             'image'=> "https://via.placeholder.com/640x480.png/00cc88?text=quia = new offer",
+            
+
         ]);
         return redirect()->route('offers')->with([
             'success' =>'Congratulations! Your job offer has been updated successfully'
