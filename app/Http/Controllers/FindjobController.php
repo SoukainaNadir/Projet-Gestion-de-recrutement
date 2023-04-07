@@ -53,7 +53,7 @@ class FindjobController extends Controller
         ]);
     }
 
-    public function update(Request $request, $slug){
+    public function update(JobRequest $request, $slug){
         $offer = Job::where('slug',$slug)->first();
         $offer->update([
             'title'=>$request->title,
@@ -68,6 +68,14 @@ class FindjobController extends Controller
         ]);
         return redirect()->route('offers')->with([
             'success' =>'Congratulations! Your job offer has been updated successfully'
+        ]);
+    }
+
+    public function delete($slug){
+        $offer = Job::where('slug',$slug)->first();
+        $offer->delete();
+        return redirect()->route('offers')->with([
+            'success' =>'Your offer has been deleted successfully'
         ]);
     }
 

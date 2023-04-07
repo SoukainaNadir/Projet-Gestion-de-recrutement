@@ -52,7 +52,13 @@
                 <div class="mt-8">
                 <a href="{{ route('offer.show',$offer->slug) }}" class="inline-block bg-[#0081C9] hover:bg-[#3AB4F2]  text-white py-2 px-4 rounded-lg">Apply Now</a>
                 <a href="{{ route('offer.edit',$offer->slug) }}" class="inline-block bg-[#a24433] hover:bg-[#c06251]  text-white py-2 px-4 rounded-lg">Update offer</a>
+                <form action="{{ route('offer.delete',$offer->slug) }}" method="post">
+                    @csrf
+                    @method('delete')
+                    <button type="sbmit" class="inline-block bg-[#0081C9] hover:bg-[#3AB4F2]  text-white py-2 px-4 rounded-lg">delete</button>
+                </form>
                 </div>
+                
             </div>
         </div>
     </div>

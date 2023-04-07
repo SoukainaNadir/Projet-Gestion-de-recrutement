@@ -52,7 +52,6 @@
                     <div class="mt-4">
                         <label for="description" class="block text-gray-700 font-bold mb-2">Description:</label>
                         <textarea id="description" name="description" class="border border-gray-400 p-2 w-full" required></textarea>
-               
                     </div>
                     <div class="mt-4">
                         <label for="location" class="block text-gray-700 font-bold mb-2">Location:</label>
@@ -67,10 +66,10 @@
                         <label class="block text-gray-700 font-bold mb-2 ">Job Type</label>
                         <select name="jobtype" id="jobtype" class="w-full border-gray-300 rounded-md py-2 px-3 focus:outline-none focus:border-blue-400" required>
                             <option value="" disabled selected>Choose option</option>
-                            <option value="Full-time" {{ $offer->jobtype == 'Full-time' ? 'selected' : '' }}>Full-time</option>
-                            <option value="Part-time" {{ $offer->jobtype == 'Part-time' ? 'selected' : '' }}>Part-time</option>
-                            <option value="Freelance" {{ $offer->jobtype == 'Freelance' ? 'selected' : '' }}>Freelance</option>
-                            <option value="Internship" {{ $offer->jobtype == 'Internship' ? 'selected' : '' }}>Internship</option>
+                            <option value="Full-time">Full-time</option>
+                            <option value="Part-time" >Part-time</option>
+                            <option value="Freelance">Freelance</option>
+                            <option value="Internship">Internship</option>
                         </select>
                     </div>
                     <div class="my-4 float-right">
