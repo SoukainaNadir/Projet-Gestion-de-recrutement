@@ -29,7 +29,14 @@ class FindjobController extends Controller
 }
 
     public function store(JobRequest $request){
-
+    
+        if($request->has('image')){
+            $file=$request->image;
+            $image_name = time().'_'.$file->getClientOriginalName();
+            $file->move(public_path('uploads') ,$image_name);
+            
+        }
+        
         Job::create([
             'title'=>$request->title,
             'description'=>$request->description,
@@ -37,7 +44,7 @@ class FindjobController extends Controller
             'location'=>$request->location,
             'salary'=>$request->salary,
             'jobtype'=>$request->jobtype,
-            'image'=> "https://via.placeholder.com/640x480.png/00cc88?text=quia = new offer",
+            'image'=> $image_name,
         ]);
 
         return redirect()->route('offers')->with([

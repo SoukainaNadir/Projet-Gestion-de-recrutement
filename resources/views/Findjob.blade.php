@@ -34,7 +34,7 @@
                 <div class=" container mx-auto bg-white rounded-xl shadow-md overflow-hidden my-16">
                 <div class="md:flex ">
                     <div class="md:flex-shrink-0">
-                        <img class="h-48 w-full object-cover md:w-48" src="{{ asset($offer->image) }}" alt="Job">
+                        <img class="h-48 w-full object-cover md:w-48" src="{{ asset('./uploads/'.$offer->image) }}" alt="Job">
                     </div>
                     <div class="p-8">
                         <p class="uppercase tracking-wide text-sm text-indigo-500 font-semibold"> Type: {{ $offer->jobtype }}</p>

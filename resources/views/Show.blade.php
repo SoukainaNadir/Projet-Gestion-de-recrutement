@@ -27,11 +27,11 @@
 
     <div class="container">
         <div class=" container max-w-4xl mx-auto bg-white rounded-xl shadow-md overflow-hidden my-16">
-        <div class="md:flex ">
+        <div class="md:flex relative">
             <div class="md:flex-shrink-0">
-                <img class="h-48 w-full object-cover md:w-48" src="{{ asset($offer->image) }}" alt="Job">
+                <img class="h-48 w-full object-cover md:w-48" src="{{ asset('./uploads/'.$offer->image) }}" alt="Job">
             </div>
-            <div class="p-8">
+            <div class="p-8 ">
                 <p class="uppercase tracking-wide text-sm text-indigo-500 font-semibold"> Type: {{ $offer->jobtype }}</p>
                 <a href="#" class="block mt-1 text-lg leading-tight font-medium text-black hover:underline">{{ $offer->title }}</a>
                 <p class="mt-2 text-gray-500">We are looking for an experienced {{ $offer->title }} to join our team.</p>
@@ -51,12 +51,19 @@
                 </div>
                 <div class="mt-8">
                 <a href="{{ route('offer.show',$offer->slug) }}" class="inline-block bg-[#0081C9] hover:bg-[#3AB4F2]  text-white py-2 px-4 rounded-lg">Apply Now</a>
-                <a href="{{ route('offer.edit',$offer->slug) }}" class="inline-block bg-[#a24433] hover:bg-[#c06251]  text-white py-2 px-4 rounded-lg">Update offer</a>
-                <form action="{{ route('offer.delete',$offer->slug) }}" method="post">
+                <a href="{{ route('offer.edit',$offer->slug) }}" class="inline-block bg-[#858b5d] hover:bg-[#5d6037]  text-white py-2 px-4 rounded-lg">Update offer</a>
+                <form id ="{{ $offer->id }}"action="{{ route('offer.delete',$offer->slug) }}" method="post">
                     @csrf
-                    @method('delete')
-                    <button type="sbmit" class="inline-block bg-[#0081C9] hover:bg-[#3AB4F2]  text-white py-2 px-4 rounded-lg">delete</button>
+                    @method('DELETE')
                 </form>
+                <button
+                onclick="event.preventDefault();
+                if(confirm('Once you delete your offer, it cannot be restored. Are you absolutely sure that you want to proceed with this action?'))
+                document.getElementById({{ $offer->id }}).submit();" 
+                type="submit" class="absolute bottom-4 right-4 bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded-lg">
+                    <i class="fas fa-trash"></i>
+                </button>
+                
                 </div>
                 
             </div>

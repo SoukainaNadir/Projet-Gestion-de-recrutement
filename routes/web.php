@@ -21,4 +21,4 @@ Route::get('/create/offer', 'HomeController@create')->name('offer.create');
 Route::post('/add/offer', 'FindjobController@store')->name('offer.store');
 Route::get('/edit/offer/{slug}', 'FindjobController@edit')->name('offer.edit');
 Route::put('/update/offer/{slug}', 'FindjobController@update')->name('offer.update');
-Route::post('/delete/offer/{slug}', 'FindjobController@delete')->name('offer.delete');
+Route::delete('/delete/offer/{slug}', 'FindjobController@delete')->name('offer.delete');
