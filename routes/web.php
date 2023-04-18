@@ -22,3 +22,12 @@ Route::post('/add/offer', 'FindjobController@store')->name('offer.store');
 Route::get('/edit/offer/{slug}', 'FindjobController@edit')->name('offer.edit');
 Route::put('/update/offer/{slug}', 'FindjobController@update')->name('offer.update');
 Route::delete('/delete/offer/{slug}', 'FindjobController@delete')->name('offer.delete');
+Route::middleware([
+    'auth:sanctum',
+    config('jetstream.auth_session'),
+    'verified'
+])->group(function () {
+    Route::get('/dashboard', function () {
+        return view('dashboard');
+    })->name('dashboard');
+});

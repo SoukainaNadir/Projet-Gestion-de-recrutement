@@ -56,24 +56,24 @@
                         <div class="mt-8">
                         <a href="{{ route('offer.show',$offer->slug) }}" class="inline-block bg-[#0081C9] hover:bg-[#3AB4F2]  text-white py-2 px-4 rounded-lg">More details</a>
                         </div>
-                        
+
                     </div>
                 </div>
             </div>
-                
+
                 @endforeach
-            
+
                 </div>
 
             <div class="flex justify-center ">
                 <div class="flex justify-center items-center mt-8">
-                    <div class="flex">      
+                    <div class="flex">
                         @if ($offers->onFirstPage())
                             <span class="border border-gray-300 rounded-l px-3 py-2 bg-gray-200 cursor-not-allowed">&laquo;</span>
                         @else
                             <a href="{{ $offers->previousPageUrl() }}" class="border border-gray-300 rounded-l px-3 py-2 bg-gray-200 hover:bg-gray-300">&laquo;</a>
-                        @endif 
-                        
+                        @endif
+
                         {{-- @foreach ($offers as $offer)
                             @if ($offer->url)
                                 <a href="{{ $offer->url }}" class="{{ $offer->active ? 'border-blue-500 bg-blue-500 text-white' : 'border-gray-300 hover:bg-gray-200' }} px-3 py-2 border">{{ $offer->label }}</a>
@@ -89,16 +89,24 @@
                         @endif
                     </div>
                 </div>
-                
-            </div> 
-        </div>    
+
+            </div>
+        </div>
     </div>
-</body>    
+</body>
 @endsection
 
 
 @section('script')
     <script>
+
+        const closeButton = document.querySelector('#close-button');
+        const alertPanel = document.querySelector('#error-msg');
+        closeButton.addEventListener('click', () => {
+        alertPanel.classList.add('hidden');
+        });
+
         
+
     </script>
 @endsection

@@ -23,8 +23,9 @@ class JobRequest extends FormRequest
     {
         return [
             'title' => 'required|min:3|max:100',
-            'description' => 'required|min:10|max:1000',          
+            'description' => 'required|min:10|max:1000',
             'location' => 'required|min:3|max:100',
+            'image'=>$this->route('slug') ? 'image|mimes:png,jpg,jpeg|max:2048':'required|image|mimes:png,jpg,jpeg|max:2048'
         ];
     }
 }

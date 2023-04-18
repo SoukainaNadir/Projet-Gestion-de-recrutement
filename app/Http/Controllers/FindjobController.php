@@ -29,14 +29,13 @@ class FindjobController extends Controller
 }
 
     public function store(JobRequest $request){
-    
+
         if($request->has('image')){
             $file=$request->image;
             $image_name = time().'_'.$file->getClientOriginalName();
             $file->move(public_path('uploads') ,$image_name);
-            
         }
-        
+
         Job::create([
             'title'=>$request->title,
             'description'=>$request->description,
@@ -44,13 +43,13 @@ class FindjobController extends Controller
             'location'=>$request->location,
             'salary'=>$request->salary,
             'jobtype'=>$request->jobtype,
-            'image'=> $image_name,
+            'image'=> $image_name
         ]);
 
         return redirect()->route('offers')->with([
             'success' =>'Congratulations! Your job offer has been added successfully'
         ]);
-        
+
     }
 
     public function edit($slug){
@@ -62,6 +61,14 @@ class FindjobController extends Controller
 
     public function update(JobRequest $request, $slug){
         $offer = Job::where('slug',$slug)->first();
+        if($request->has('image')){
+            $file=$request->image;
+            $image_name = time().'_'.$file->getClientOriginalName();
+            $file->move(public_path('uploads'),$image_name);
+            unlink(public_path('uploads').'/'.$offer->image);
+            $offer->image= $image_name;
+
+        }
         $offer->update([
             'title'=>$request->title,
             'description'=>$request->description,
@@ -69,9 +76,7 @@ class FindjobController extends Controller
             'location'=>$request->location,
             'salary'=>$request->salary,
             'jobtype'=>$request->jobtype,
-            'image'=> "https://via.placeholder.com/640x480.png/00cc88?text=quia = new offer",
-            
-
+            'image'=> $offer->image
         ]);
         return redirect()->route('offers')->with([
             'success' =>'Congratulations! Your job offer has been updated successfully'
@@ -80,6 +85,7 @@ class FindjobController extends Controller
 
     public function delete($slug){
         $offer = Job::where('slug',$slug)->first();
+        unlink(public_path('uploads').'/'.$offer->image);
         $offer->delete();
         return redirect()->route('offers')->with([
             'success' =>'Your offer has been deleted successfully'

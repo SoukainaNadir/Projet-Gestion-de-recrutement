@@ -27,7 +27,7 @@
 
 
     @endif
-    
+
 
 
 
@@ -47,7 +47,7 @@
                     <div>
                         <label for="title" class="block text-gray-700 font-bold mb-2">Title:</label>
                         <input type="text" id="title" name="title" class="border border-gray-400 p-2 w-full" required>
-                        
+
                     </div>
                     <div class="mt-4">
                         <label for="description" class="block text-gray-700 font-bold mb-2">Description:</label>
@@ -83,35 +83,20 @@
 
 
 
-</body>    
+</body>
 @endsection
 
 @section('script')
 
 @if ($errors->any())
 <script>
-    
-
-const closeButton = document.querySelector('#close-button');
-const alertPanel = document.querySelector('#error-msg');
-closeButton.addEventListener('click', () => {
-alertPanel.classList.add('hidden');
-});
-
-$(document).ready(function() {
-  // When the page is loaded, show the alert message
-    var jobtype = $('select[name="jobtype"]').val();
-    alert('You have selected ' + jobtype + ' as the job type.');
-});
-
-
-
+    const closeButton = document.querySelector('#close-button');
+    const alertPanel = document.querySelector('#error-msg');
+    closeButton.addEventListener('click', () => {
+    alertPanel.classList.add('hidden');
+    });
 </script>
 @endif
-
-
-
-
 
 
 

@@ -25,20 +25,20 @@
         </span>
     </div>
     @endif
-    
+
 
     <div class="max-w-4xl mx-auto bg-white rounded-xl shadow-md overflow-hidden m-20">
             <div class="p-8 md:container">
                 <div class="uppercase tracking-wide text-2xl font-bold mb-4">Update {{ $offer->title }}</div>
-                    <form action="{{route('offer.update',$offer->slug)}}" method="POST" class="mt-4" name="form">
+                    <form action="{{route('offer.update',$offer->slug)}}" method="POST" class="mt-4" name="form" enctype="multipart/form-data">
                     @csrf
                         @method('Put')
-                        
+
                     <div class="mt-4">
-                        <label class="block text-gray-700 font-bold mb-2" for="photo">
+                        <label class="block text-gray-700 font-bold mb-2" for="image">
                             Photo
                         </label>
-                        <input class="appearance-none border rounded w-full py-5 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="photo" name="photo" type="file">
+                        <input class="appearance-none border rounded w-full py-5 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="image" name="image" type="file">
                     </div>
                     <div>
                         <label for="title" class="block text-gray-700 font-bold mb-2">Title:</label>
@@ -78,7 +78,7 @@
 
 
 
-</body>    
+</body>
 @endsection
 
 @section('script')
