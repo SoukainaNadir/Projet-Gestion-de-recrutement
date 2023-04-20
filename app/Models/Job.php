@@ -9,9 +9,13 @@ class Job extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['title','description','slug','location','salary','jobetype','image'];
+    protected $fillable = ['title','description','slug','location','salary','jobetype','image','user_id'];
     public function getRouteKeyName(){
         return 'slug';
-        
+    }
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
     }
 }

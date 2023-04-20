@@ -27,10 +27,17 @@
                             <a href="{{ url('/') }}" class="text-gray-800 hover:text-gray-600 px-3 py-2 rounded-md text-lg font-medium">Home</a>
                             <a href="#" class="text-gray-800 hover:text-gray-600 px-3 py-2 rounded-md text-lg font-medium">Candidates</a>
                             <a href="{{ url('/Findjob') }}" class="text-gray-800 hover:text-gray-600 px-3 py-2 rounded-md text-lg font-medium">Jobs</a>
-                            <a href="{{route('offer.create') }}" class="text-gray-800 hover:text-gray-600 px-3 py-2 rounded-md text-lg font-medium">Add a Job</a>
+
+                            @if(auth()->check()) 
+                            <a href="{{route('profile.show') }}" class="text-gray-800 hover:text-gray-600 px-3 py-2 rounded-md text-lg font-medium">{{ auth()->user()->name }}</a>
+                            <a href="{{route('offer.create') }}" class="bg-[#2790CB] hover:bg-[#3AB4F2] text-white px-3 py-2 rounded-md text-lg font-medium">Add a Job</a>
+                            @else
+                            <a href="{{url('/login') }}" class="text-gray-800 hover:text-gray-600 px-3 py-2 rounded-md text-lg font-medium ">Sign Up</a>
+                            <a href="{{url('/register') }}" class="text-white hover:text-gray-600 px-5 py-2 rounded-full text-m font-medium border-2 border-solid border-[#0081C9] ">Sign In</a>
+                            @endif
                         </div>
                         <div class="ml-4">
-                            <a href="#" class="text-white hover:text-gray-600 px-5 py-2 rounded-full text-m font-medium border-2 border-solid border-[#0081C9] ">Login</a>
+
                         </div>
                     </div>
                 </div>

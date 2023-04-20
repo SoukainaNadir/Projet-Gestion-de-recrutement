@@ -30,6 +30,7 @@ class FindjobController extends Controller
 
     public function store(JobRequest $request){
 
+
         if($request->has('image')){
             $file=$request->image;
             $image_name = time().'_'.$file->getClientOriginalName();
@@ -43,7 +44,8 @@ class FindjobController extends Controller
             'location'=>$request->location,
             'salary'=>$request->salary,
             'jobtype'=>$request->jobtype,
-            'image'=> $image_name
+            'image'=> $image_name,
+            'user_id'=>auth()->user()->id
         ]);
 
         return redirect()->route('offers')->with([
@@ -76,7 +78,8 @@ class FindjobController extends Controller
             'location'=>$request->location,
             'salary'=>$request->salary,
             'jobtype'=>$request->jobtype,
-            'image'=> $offer->image
+            'image'=> $offer->image,
+            'user_id'=>auth()->user()->id
         ]);
         return redirect()->route('offers')->with([
             'success' =>'Congratulations! Your job offer has been updated successfully'
