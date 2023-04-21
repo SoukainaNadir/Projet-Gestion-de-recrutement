@@ -71,7 +71,7 @@
                     </div>
                 @endif
 
-                <!-- Settings Dropdown -->
+                <!-- Settings Dropdown --> 
                 <div class="ml-3 relative">
                     <x-dropdown align="right" width="48">
                         <x-slot name="trigger">

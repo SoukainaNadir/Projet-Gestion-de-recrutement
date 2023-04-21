@@ -17,9 +17,9 @@
         <div class="flex justify-center py-4 space-x-9">
         <a href="{{ url('/Findjob') }}" class="bg-[#2790CB] hover:bg-[#3AB4F2] text-white font-bold py-2 px-5 rounded-full">Find a job</a>
         @if (auth()->check())
-        <a href="{{ route('offer.create') }}" class="bg-[#3AB4F2] hover:bg-[#2790CB] text-white font-bold py-2 px-5 rounded-full">Offer a job</a>
+        <a href="{{ route('offer.create') }}" class="bg-[#3AB4F2] hover:bg-[#2790CB] text-white font-bold py-2 px-5 rounded-full">Add a job</a>
         @else
-        <a href="{{ route('login') }}" class="bg-[#3AB4F2] hover:bg-[#2790CB] text-white font-bold py-2 px-5 rounded-full">Offer a job</a>
+        <a href="{{ route('register') }}" class="bg-[#3AB4F2] hover:bg-[#2790CB] text-white font-bold py-2 px-5 rounded-full">Offer a job</a>
         @endif
         </div>
     </div>
