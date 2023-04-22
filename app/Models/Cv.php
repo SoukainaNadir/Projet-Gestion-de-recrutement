@@ -17,6 +17,10 @@ class Cv extends Model
         'experience',
         'skills',
         'interests',
+        'image',
+        'headline',
+        'profil',
+        'languages',
         'user_id',
     ];
 

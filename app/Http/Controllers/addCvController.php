@@ -19,8 +19,6 @@ class addCvController extends Controller
         return view('createCv');
     }
 
-
-
     public function store(Request $request)
 {
     $user = auth()->user();
@@ -29,7 +27,6 @@ class addCvController extends Controller
     if ($user->cvs()->exists()) {
         return redirect()->back()->withErrors(['You have already created a CV.']);
     }
-
 
     $validatedData = $request->validate([
         'name' => 'required|string|max:255',
@@ -40,9 +37,19 @@ class addCvController extends Controller
         'experience' => 'nullable|string|max:65535',
         'skills' => 'nullable|string|max:65535',
         'interests' => 'nullable|string|max:65535',
+        'profil' => 'nullable|string|max:65535',
+        'languages' => 'nullable|string|max:65535',
+        'headline' => 'nullable|string|max:65535',
+        'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048'
     ]);
 
     $cv = new Cv();
+
+    if ($request->hasFile('image')) {
+        $image = $request->file('image');
+        $imagePath = $image->store('public/images');
+        $cv->image = $imagePath;
+    }
 
     $cv->name = $validatedData['name'];
     $cv->email = $validatedData['email'];
