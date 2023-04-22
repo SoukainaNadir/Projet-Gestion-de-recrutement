@@ -29,6 +29,8 @@
                             <a href="#" class="text-gray-800 hover:text-gray-600 px-3 py-2 rounded-md text-lg font-medium">Candidates</a>
                             <a href="{{ url('/Findjob') }}" class="text-gray-800 hover:text-gray-600 px-3 py-2 rounded-md text-lg font-medium">Jobs</a>
                             @if(auth()->check())
+                            <a href="{{ url('/AdduploadCV') }}" class="text-gray-800 hover:text-gray-600 px-3 py-2 rounded-md text-lg font-medium">Upload your CV
+                            </a>
                             <!-- This is an example component -->
                             <div class="max-w-lg mx-auto">
                                 <button class="block h-12 w-12 rounded-full overflow-hidden border-2 border-gray-600 focus:outline-none focus:bg-white " type="button" data-dropdown-toggle="dropdown"><img class="h-full w-full object-cover" src="{{ Auth::user()->profile_photo_url }}" alt="{{ Auth::user()->name }}" /></button>
@@ -46,7 +48,9 @@
                                 </div>
                             </div>
                             <script src="https://unpkg.com/@themesberg/flowbite@latest/dist/flowbite.bundle.js"></script>
+
                             @else
+                            <a href="{{ url('/register') }}" class="text-gray-800 hover:text-gray-600 px-3 py-2 rounded-md text-lg font-medium">Upload your CV</a>
                             <a href="{{url('/login') }}" class="text-gray-800 hover:text-gray-600 px-3 py-2 rounded-md text-lg font-medium ">Sign Up</a>
                             <a href="{{url('/register') }}" class="text-white hover:text-gray-600 px-5 py-2 rounded-full text-m font-medium border-2 border-solid border-[#0081C9] ">Sign In</a>
                             @endif

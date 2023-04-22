@@ -16,6 +16,11 @@
                         {{ __('Accueil') }}
                     </x-nav-link>
                 </div>
+                <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                    <x-nav-link href="{{ route('cv.show') }}" :active="request()->routeIs('home')">
+                        {{ __('My Cvs') }}
+                    </x-nav-link>
+                </div>
             </div>
 
             <div class="hidden sm:flex sm:items-center sm:ml-6">
@@ -71,7 +76,7 @@
                     </div>
                 @endif
 
-                <!-- Settings Dropdown --> 
+                <!-- Settings Dropdown -->
                 <div class="ml-3 relative">
                     <x-dropdown align="right" width="48">
                         <x-slot name="trigger">
