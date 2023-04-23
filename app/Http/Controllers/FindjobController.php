@@ -27,10 +27,8 @@ class FindjobController extends Controller
     $offer = Job::findOrFail($id);
     return view('offers.show', compact('offer'));
 }
- 
+
     public function store(JobRequest $request){
-
-
         if($request->has('image')){
             $file=$request->image;
             $image_name = time().'_'.$file->getClientOriginalName();
@@ -69,7 +67,6 @@ class FindjobController extends Controller
             $file->move(public_path('uploads'),$image_name);
             unlink(public_path('uploads').'/'.$offer->image);
             $offer->image= $image_name;
-
         }
         $offer->update([
             'title'=>$request->title,

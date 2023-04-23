@@ -75,25 +75,85 @@ class addCvController extends Controller
 
 public function edit(Cv $cv)
 {
-    return view('cv.edit', compact('cv'));
+    // Only allow the CV owner to edit
+    if ($cv->user_id != auth()->user()->id) {
+        return redirect()->back()->withErrors(['You are not authorized to edit this CV.']);
+    }
+
+    return view('editCv', compact('cv'));
 }
+
 
 public function update(Request $request, Cv $cv)
 {
     $validatedData = $request->validate([
         'name' => 'required|string|max:255',
-        'email' => 'required|string|email|max:255|unique:cvs,email,' ,
-        'phone' => 'nullable|string|max:20',
+        'email' => 'required|email|max:255',
+        'phone' => 'nullable|string|max:255',
         'address' => 'nullable|string|max:255',
-        'education' => 'nullable|string',
-        'experience' => 'nullable|string',
-        'skills' => 'nullable|string',
-        'interests' => 'nullable|string',
+        'education' => 'nullable|string|max:65535',
+        'experience' => 'nullable|string|max:65535',
+        'skills' => 'nullable|string|max:65535',
+        'interests' => 'nullable|string|max:65535',
+        'profil' => 'nullable|string|max:65535',
+        'languages' => 'nullable|string|max:65535',
+        'headline' => 'required|string|max:255',
+        'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048'
     ]);
 
-    $cv->update($validatedData);
+    // Only allow updating the CV if the user owns it
+    if ($cv->user_id !== auth()->user()->id) {
+        return redirect()->back()->withErrors(['You do not have permission to update this CV.']);
+    }
+    if ($cv->image) {
+        $image_path = public_path('uploads/' . $cv->image);
+        if (file_exists($image_path)) {
+            unlink($image_path);
+        }
+    }
+    if($request->has('image')){
+        $file=$request->image;
+        $image_name = time().'_'.$file->getClientOriginalName();
+        $file->move(public_path('uploads') ,$image_name);
+        $cv->image=$image_name;
+    }
 
-    return redirect()->route('cv.show', $cv)->with('success', 'CV updated successfully');
+    $cv->name = $validatedData['name'];
+    $cv->email = $validatedData['email'];
+    $cv->phone = $validatedData['phone'];
+    $cv->address = $validatedData['address'];
+    $cv->education = $validatedData['education'];
+    $cv->experience = $validatedData['experience'];
+    $cv->skills = $validatedData['skills'];
+    $cv->interests = $validatedData['interests'];
+    $cv->languages = $validatedData['languages'];
+    $cv->headline = $validatedData['headline'];
+    $cv->profil = $validatedData['profil'];
+
+    $cv->save();
+
+    return redirect()->route('cv.show')
+                    ->with('success','CV updated successfully.');
 }
+public function delete(Cv $cv)
+{
+    // Only allow deleting the CV if the user owns it
+    if ($cv->user_id !== auth()->user()->id) {
+        return redirect()->back()->withErrors(['You do not have permission to delete this CV.']);
+    }
+
+    if ($cv->image) {
+        $image_path = public_path('uploads/' . $cv->image);
+        if (file_exists($image_path)) {
+            unlink($image_path);
+        }
+    }
+
+    $cv->delete();
+
+    return redirect()->route('cv.show')
+                    ->with('success','CV deleted successfully.');
+}
+
 
 }

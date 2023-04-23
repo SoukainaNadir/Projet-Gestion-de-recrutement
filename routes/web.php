@@ -27,12 +27,24 @@ Route::get('/AdduploadCV', function () {
     return view('AdduploadCV');
 })->name('AdduploadCV');
 
+
 Route::get('/showCv','addCvController@index')->name('cv.show');
 Route::get('/successCv', function () {
     return view('successCv');
 })->name('successCv');
 Route::get('/create/cv', 'addCvController@create')->name('cv.create');
 Route::post('/add/cv', 'addCvController@store')->name('cv.store');
+Route::get('/cvs/{cv}/edit', 'addCvController@edit')->name('cv.editCv');
+Route::put('/cvs/{cv}', 'addCvController@update')->name('cv.updateCv');
+Route::delete('/cvs/{cv}', 'addCvController@delete')->name('cv.delete');
+
+
+Route::get('/showCL','CoverletterController@index')->name('coverletters.show');
+Route::get('/coverletters/create', 'CoverletterController@create')->name('coverletters.create');
+Route::post('/coverletters', 'CoverletterController@store')->name('coverletters.store');
+Route::get('/coverletters/{coverletter}/edit', 'CoverletterController@edit')->name('coverletters.edit');
+Route::put('/coverletters/{coverletter}', 'CoverletterController@update')->name('coverletters.update');
+Route::delete('/coverletters/{coverletter}', 'CoverletterController@delete')->name('coverletters.delete');
 
 
 

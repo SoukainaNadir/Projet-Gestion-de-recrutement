@@ -18,7 +18,12 @@
                 </div>
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
                     <x-nav-link href="{{ route('cv.show') }}" :active="request()->routeIs('home')">
-                        {{ __('My Cvs') }}
+                        {{ __('My Cv') }}
+                    </x-nav-link>
+                </div>
+                <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                    <x-nav-link href="{{ route('coverletters.show')}}" :active="request()->routeIs('home')">
+                        {{ __('My Cover letter') }}
                     </x-nav-link>
                 </div>
             </div>

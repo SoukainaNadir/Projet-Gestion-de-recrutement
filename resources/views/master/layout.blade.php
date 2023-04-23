@@ -29,7 +29,7 @@
                             <a href="#" class="text-gray-800 hover:text-gray-600 px-3 py-2 rounded-md text-lg font-medium">Candidates</a>
                             <a href="{{ url('/Findjob') }}" class="text-gray-800 hover:text-gray-600 px-3 py-2 rounded-md text-lg font-medium">Jobs</a>
                             @if(auth()->check())
-                            <a href="{{ url('/AdduploadCV') }}" class="text-gray-800 hover:text-gray-600 px-3 py-2 rounded-md text-lg font-medium">Upload your CV
+                            <a href="{{ url('/AdduploadCV') }}" class="text-gray-800 hover:text-gray-600 px-3 py-2 rounded-md text-lg font-medium">Upload
                             </a>
                             <!-- This is an example component -->
                             <div class="max-w-lg mx-auto">
