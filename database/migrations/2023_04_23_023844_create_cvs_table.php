@@ -11,13 +11,21 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::table('cvs', function (Blueprint $table) {
-            //
+        Schema::create('cvs', function (Blueprint $table) {
+            $table->id();
+            $table->string('name');
+            $table->string('email');
+            $table->string('phone')->nullable();
+            $table->string('address')->nullable();
+            $table->text('education')->nullable();
+            $table->text('experience')->nullable();
+            $table->text('skills')->nullable();
+            $table->text('interests')->nullable();
             $table->string('headline')->nullable();
             $table->string('profil')->nullable();
             $table->string('image')->nullable();
             $table->string('languages')->nullable();
-
+            $table->timestamps();
         });
     }
 
@@ -26,12 +34,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::table('cvs', function (Blueprint $table) {
-            //
-            $table->dropColumn('headline');
-            $table->dropColumn('profil');
-            $table->dropColumn('image');
-            $table->dropColumn('languages');
-        });
+        Schema::dropIfExists('cvs');
     }
 };

@@ -39,16 +39,15 @@ class addCvController extends Controller
         'interests' => 'nullable|string|max:65535',
         'profil' => 'nullable|string|max:65535',
         'languages' => 'nullable|string|max:65535',
-        'headline' => 'nullable|string|max:65535',
+        'headline' => 'required|string|max:255',
         'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048'
     ]);
 
     $cv = new Cv();
-
-    if ($request->hasFile('image')) {
-        $image = $request->file('image');
-        $imagePath = $image->store('public/images');
-        $cv->image = $imagePath;
+    if($request->has('image')){
+        $file=$request->image;
+        $image_name = time().'_'.$file->getClientOriginalName();
+        $file->move(public_path('uploads') ,$image_name);
     }
 
     $cv->name = $validatedData['name'];
@@ -59,7 +58,15 @@ class addCvController extends Controller
     $cv->experience = $validatedData['experience'];
     $cv->skills = $validatedData['skills'];
     $cv->interests = $validatedData['interests'];
+    $cv->languages = $validatedData['languages'];
+    $cv->headline = $validatedData['headline'];
+    $cv->profil = $validatedData['profil'];
+    $cv->image=$image_name;
+
+
     $cv->user_id = auth()->user()->id;
+
+
     $cv->save();
 
     return redirect()->route('successCv')

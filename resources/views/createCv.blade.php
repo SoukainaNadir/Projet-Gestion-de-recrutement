@@ -27,40 +27,58 @@
 
         @endif
 
-          <form method="POST" action="{{ route('cv.store') }}" class="w-full">
+          <form method="POST" action="{{ route('cv.store') }}" class="w-full" enctype="multipart/form-data">
             @csrf
             <div class="mb-4">
-              <label class="block text-gray-700 font-bold mb-2" for="name">First Name and Last name</label>
-              <input class="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="name" name="name" type="text"  required>
+                <label class="block text-gray-700 font-bold mb-2" for="name">First and Last name</label>
+                <input class="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="name" name="name" type="text"  required>
             </div>
             <div class="mb-4">
-              <label class="block text-gray-700 font-bold mb-2" for="email">Email Address</label>
-              <input class="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="email" name="email" type="email" required>
+                <label class="block text-gray-700 font-bold mb-2" for="headline">Headline</label>
+                <input class="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="headline" name="headline" type="text"  required>
             </div>
             <div class="mb-4">
-              <label class="block text-gray-700 font-bold mb-2" for="phone">Phone Number</label>
-              <input class="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="phone" name="phone" type="tel"  required>
+                <label class="block text-gray-700 font-bold mb-2" for="image">Image</label>
+                <input type="file" name="image" id="image">
+                </div>
+            <div class="mb-4">
+                <label class="block text-gray-700 font-bold mb-2" for="languages">Profil</label>
+                <textarea class="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="profil" name="profil" rows="3" required></textarea>
             </div>
             <div class="mb-4">
-              <label class="block text-gray-700 font-bold mb-2" for="address">Address</label>
-              <textarea class="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="address" name="address" rows="3"  required></textarea>
+                <label class="block text-gray-700 font-bold mb-2" for="email">Email Address</label>
+                <input class="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="email" name="email" type="email" required>
             </div>
             <div class="mb-4">
-              <label class="block text-gray-700 font-bold mb-2" for="education">Education</label>
-              <textarea class="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="education" name="education" rows="3" required></textarea>
+                <label class="block text-gray-700 font-bold mb-2" for="phone">Phone Number</label>
+                <input class="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="phone" name="phone" type="tel"  required>
             </div>
             <div class="mb-4">
-              <label class="block text-gray-700 font-bold mb-2" for="experience">Work Experience</label>
-              <textarea class="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="experience" name="experience" rows="3"  required></textarea>
+                <label class="block text-gray-700 font-bold mb-2" for="address">Address</label>
+                <textarea class="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="address" name="address" rows="3"  required></textarea>
             </div>
             <div class="mb-4">
-              <label class="block text-gray-700 font-bold mb-2" for="skills">Skills</label>
-              <textarea class="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="skills" name="skills" rows="3"  required></textarea>
+                <label class="block text-gray-700 font-bold mb-2" for="education">Education</label>
+                <textarea class="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="education" name="education" rows="3" required></textarea>
+            </div>
+            <div class="mb-4">
+                <label class="block text-gray-700 font-bold mb-2" for="experience">Work Experience</label>
+                <textarea class="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="experience" name="experience" rows="3"  required></textarea>
+            </div>
+            <div class="mb-4">
+                <label class="block text-gray-700 font-bold mb-2" for="languages">Languages</label>
+                <textarea class="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="languages" name="languages" rows="3" required></textarea>
+            </div>
+
+
+            <div class="mb-4">
+                <label class="block text-gray-700 font-bold mb-2" for="skills">Skills</label>
+                <textarea class="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="skills" name="skills" rows="3"  required></textarea>
             </div>
             <div class="mb-4">
                 <label class="block text-gray-700 font-bold mb-2" for="interests">Interests</label>
                 <textarea class="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="interests" name="interests" rows="3" required></textarea>
-              </div>
+                </div>
             <div class="flex flex-col w-full px-3">
                 <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
                     Create

@@ -27,7 +27,7 @@ class FindjobController extends Controller
     $offer = Job::findOrFail($id);
     return view('offers.show', compact('offer'));
 }
-
+ 
     public function store(JobRequest $request){
 
 
