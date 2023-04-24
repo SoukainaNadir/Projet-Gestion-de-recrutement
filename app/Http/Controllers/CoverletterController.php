@@ -105,7 +105,7 @@ class CoverletterController extends Controller
 
     $coverletter->delete();
 
-    return redirect()->route('Coverletters.show')
+    return redirect()->route('coverletters.show')
                     ->with('success','Cover Letter deleted successfully.');
 }
 

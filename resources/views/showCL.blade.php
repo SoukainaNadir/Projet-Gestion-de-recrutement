@@ -63,8 +63,8 @@
                     </div>
                     <hr class="my-4" />
                     <div class="flex items-center mb-2">
-                        <div class="text-gray-800 underline bold">Object : </div>
-                        <div class="text-gray-800"> {{ $coverletter->object }}</div>
+                        <div class="text-gray-800 underline font-bold">Object:</div>
+                        <div class="text-gray-800">&nbsp; {{ $coverletter->object }}</div>
                     </div>
                     <div class="flex items-center mb-2">
                         <div class="text-gray-800">{{ $coverletter->content}}</div>
@@ -90,13 +90,13 @@
 
 
 @section('script')
+    <script>
 
-@if ($errors->any())
-<script>
-    const closeButton = document.querySelector('#close-button');
-    const alertPanel = document.querySelector('#error-msg');
-    closeButton.addEventListener('click', () => {
-    alertPanel.classList.add('hidden');
-    });
-</script>
-@endif
+        const closeButton = document.querySelector('#close-button');
+        const alertPanel = document.querySelector('#error-msg');
+        closeButton.addEventListener('click', () => {
+        alertPanel.classList.add('hidden');
+        });
+    </script>
+@endsection
+

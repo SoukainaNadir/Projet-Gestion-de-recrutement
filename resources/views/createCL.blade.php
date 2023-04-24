@@ -71,13 +71,13 @@
 
 
 @section('script')
-
-@if ($errors->any())
 <script>
+
     const closeButton = document.querySelector('#close-button');
     const alertPanel = document.querySelector('#error-msg');
     closeButton.addEventListener('click', () => {
     alertPanel.classList.add('hidden');
     });
 </script>
-@endif
+@endsection
+
