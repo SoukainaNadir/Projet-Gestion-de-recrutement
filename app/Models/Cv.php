@@ -22,6 +22,7 @@ class Cv extends Model
         'profil',
         'languages',
         'user_id',
+        
     ];
 
     public function user(){

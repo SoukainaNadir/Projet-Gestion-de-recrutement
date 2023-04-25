@@ -4,11 +4,14 @@ namespace App\Http\Controllers;
 
 use App\Models\Cv;
 use Illuminate\Http\Request;
+use Barryvdh\DomPDF\Facade\Pdf;
+
 
 
 class addCvController extends Controller
 {
     //
+
     public function index()
     {
         $cvs = Cv::where('user_id', auth()->user()->id)->get();
@@ -40,14 +43,18 @@ class addCvController extends Controller
         'profil' => 'nullable|string|max:65535',
         'languages' => 'nullable|string|max:65535',
         'headline' => 'required|string|max:255',
-        'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048'
+        'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+
     ]);
 
     $cv = new Cv();
+
+
     if($request->has('image')){
         $file=$request->image;
         $image_name = time().'_'.$file->getClientOriginalName();
-        $file->move(public_path('uploads') ,$image_name);
+        $file->move(public_path('uploads'),$image_name);
+        $cv->image= $image_name;
     }
 
     $cv->name = $validatedData['name'];
@@ -62,7 +69,6 @@ class addCvController extends Controller
     $cv->headline = $validatedData['headline'];
     $cv->profil = $validatedData['profil'];
     $cv->image=$image_name;
-
 
     $cv->user_id = auth()->user()->id;
 
@@ -105,7 +111,7 @@ public function update(Request $request, Cv $cv)
     if ($cv->user_id !== auth()->user()->id) {
         return redirect()->back()->withErrors(['You do not have permission to update this CV.']);
     }
-    
+
     if($request->has('image')){
         $file=$request->image;
         $image_name = time().'_'.$file->getClientOriginalName();

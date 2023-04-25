@@ -5,10 +5,10 @@
 @endsection
 
 @section('content')
-<body class="bg-[#F9AF16] font-Inconsolata">
+<body class="bg-[#F9AF16] font-Inconsolata ">
 
 
-<div class=" container mx-auto px-8">
+<div class="container mx-auto px-8 ">
     <div class="text-center">
         <h1 class="text-4xl font-bold text-gray-900 mb-12">Your Cv</h1>
     </div>
@@ -44,12 +44,12 @@
 
     @if(auth()->user()->cvs()->count() > 0)
         @foreach (auth()->user()->cvs as $cv )
-        <div class="bg-white shadow-lg rounded-lg px-8 py-8 mt-8 mb-12 relative">
+        <div class="bg-white shadow-lg rounded-lg px-8 py-8  mb-4">
                 <div class="items-center justify-between mb-4">
                 <h2 class="text-xl font-bold text-gray-800">{{ $cv->name }}</h2>
                 <div class="text-sm font-semibold text-gray-600">{{ $cv->headline }}</div>
                 <div class="md:flex-shrink-0">
-                    <img class="h-48 w-full object-cover md:w-48" src="{{asset('./uploads/'.$cv->image)}}" alt="profil">
+                    <img class="h-48 w-full object-cover md:w-48" src="{{asset('./uploads/'.$cv->image) }}" alt="profil">
                 </div>
                 </div>
                 <hr class="my-4" />
@@ -113,21 +113,23 @@
                     </ul>
                 </div>
             </div>
-            <div class="absolute bottom-8 right-8 ">
-                <a href="{{ route('cv.editCv', $cv->id) }}" class="inline-block px-3 py-1 bg-green-500 hover:bg-green-600 text-white rounded-sm text-sm mr-2">Edit</a>
-                <form action="{{ route('cv.delete', $cv->id) }}" method="post" style="display: inline">
-                    @csrf
-                    @method('DELETE')
-                    <button type="submit" class="inline-block px-3 py-1 bg-red-500 hover:bg-red-600 text-white rounded-sm text-sm" onclick="return confirm('Are you sure you want to delete this CV?')">Delete</button>
-                </form>
-            </div>
+
+        </div>
+        <div class="text-center mb-4">
+            <a href="{{ route('pdf.generator') }}" class="inline-block px-3 py-1 bg-gray-500 hover:bg-gray-600 text-white rounded-sm text-sm mr-2"> <i class='fas fa-file-pdf'></i> Download</a>
+            <a href="{{ route('cv.editCv', $cv->id) }}" class="inline-block px-3 py-1 bg-green-500 hover:bg-green-600 text-white rounded-sm text-sm mr-2">Edit</a>
+            <form action="{{ route('cv.delete', $cv->id) }}" method="post" style="display: inline">
+                @csrf
+                @method('DELETE')
+                <button type="submit" class="inline-block px-3 py-1 bg-red-500 hover:bg-red-600 text-white rounded-sm text-sm" onclick="return confirm('Are you sure you want to delete this CV?')">Delete</button>
+            </form>
         </div>
     @endforeach
 @endif
 
 
 </div>
-
+</div>
 </body>
 @endsection
 

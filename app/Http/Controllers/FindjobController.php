@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\JobRequest;
+use App\Models\ApplyForJob;
 use App\Models\Job;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -94,7 +95,43 @@ class FindjobController extends Controller
         ]);
     }
 
+    public function applyJobSave(Request $request)
+{
+    $validatedData = $request->validate([
+        'name' => 'required',
+        'email' => 'required|email',
+        'title' => 'required',
+        'CoverLetterfile' => 'nullable|file|mimes:pdf',
+        'CVfile' => 'nullable|file|mimes:pdf',
+        'ExCv' => 'nullable|string',
+        'ExCl' => 'nullable|string',
+    ]);
+    $fileNameCv = '';
+    $fileNameCl = '';
+    if ($request->hasFile('CVfile')) {
+        $fileNameCv = time() . '_' . $request->file('CVfile')->getClientOriginalName();
+        $request->file('CVfile')->storeAs('public/cvs', $fileNameCv);
+
+
+    if ($request->hasFile('CoverLetterfile')) {
+        $fileNameCl = time() . '_' . $request->file('CoverLetterfile')->getClientOriginalName();
+        $request->file('CoverLetterfile')->storeAs('public/cover-letters', $fileNameCl);
+    }
+
+    $jobApplication = new ApplyForJob();
+    $jobApplication->name = $validatedData['name'];
+    $jobApplication->email = $validatedData['email'];
+    $jobApplication->title = $validatedData['title'];
+    $jobApplication->CVfile = $fileNameCv;
+    $jobApplication->CoverLetterfile = $fileNameCl;
+    $jobApplication->save();
+
+    return redirect()->back()->with('success', 'Your job application has been submitted successfully.');
+}
 
 
 
+
+
+}
 }

@@ -71,6 +71,7 @@
                     </div>
                     <h3 class="text-xl font-bold text-gray-800">{{ $coverletter->name }}</h3>
                 <div class="absolute bottom-8 right-8 ">
+                    <a href="{{ route('CL.generator') }}" class="inline-block px-3 py-1 bg-gray-500 hover:bg-gray-600 text-white rounded-sm text-sm mr-2"> <i class='fas fa-file-pdf'></i> Download</a>
                     <a href="{{ route('coverletters.edit', $coverletter->id) }}" class="inline-block px-3 py-1 bg-green-500 hover:bg-green-600 text-white rounded-sm text-sm mr-2">Edit</a>
                     <form action="{{ route('coverletters.delete', $coverletter->id) }}" method="post" style="display: inline">
                         @csrf

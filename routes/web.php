@@ -1,8 +1,6 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Middleware\IsRecuiter;
-use App\Http\Middleware\ICandidate;
 
 
 /*
@@ -42,6 +40,10 @@ Route::get('/cvs/{cv}/edit', 'addCvController@edit')->name('cv.editCv');
 Route::put('/cvs/{cv}', 'addCvController@update')->name('cv.updateCv');
 Route::delete('/cvs/{cv}', 'addCvController@delete')->name('cv.delete');
 
+//routes for PDF
+Route::get('/pdf/export', 'PDFController@pdfGenerator')->name('pdf.generator');
+Route::get('/CL/export', 'CLController@pdfGenerator')->name('CL.generator');
+
 
 Route::get('/showCL','CoverletterController@index')->name('coverletters.show');
 Route::get('/coverletters/create', 'CoverletterController@create')->name('coverletters.create');
@@ -50,7 +52,8 @@ Route::get('/coverletters/{coverletter}/edit', 'CoverletterController@edit')->na
 Route::put('/coverletters/{coverletter}', 'CoverletterController@update')->name('coverletters.update');
 Route::delete('/coverletters/{coverletter}', 'CoverletterController@delete')->name('coverletters.delete');
 
-
+//routes for Apply for job
+Route::post('/apply/job/save','FindjobController@applyJobSave')->name('job.save');
 
 Route::middleware([
     'auth:sanctum',
@@ -60,16 +63,10 @@ Route::middleware([
     Route::get('/dashboard', function () {
         return view('home');
     })->name('home');
-
 });
 
 
-Route::group(['middleware' => 'auth'], function() {
-    Route::group(['middleware' => 'role:candidate', 'prefix' => 'candidate', 'as' => 'candidate.'], function() {
-        Route::resource('candidate', \App\Http\Controllers\Candidates\candidateController::class);
-    });
-    Route::group(['middleware' => 'role:recuiter', 'prefix' => 'recuiter', 'as' => 'recuiter.'], function() {
-        Route::resource('recuiter', \App\Http\Controllers\Recuiters\recuiterController::class);
-   });
-});
 
+Route::get('/upload', function () {
+    return view('choice');
+})->name('upload');
