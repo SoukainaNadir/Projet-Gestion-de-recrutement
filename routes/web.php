@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Middleware\IsRecuiter;
+use App\Http\Middleware\ICandidate;
 
 
 /*
@@ -18,8 +20,10 @@ Route::get('/', 'HomeController@index');
 Route::get('/Findjob', 'FindjobController@index')->name('offers');
 
 Route::get('/offer/{id}', 'FindjobController@show')->name('offer.show');
+
 Route::get('/create/offer', 'HomeController@create')->name('offer.create');
-Route::post('/add/offer', 'FindjobController@store')->name('offer.store');
+Route::post('/add/offer','FindjobController@store' )->name('offer.store');
+
 Route::get('/edit/offer/{slug}', 'FindjobController@edit')->name('offer.edit');
 Route::put('/update/offer/{slug}', 'FindjobController@update')->name('offer.update');
 Route::delete('/delete/offer/{slug}', 'FindjobController@delete')->name('offer.delete');
@@ -59,4 +63,13 @@ Route::middleware([
 
 });
 
+
+Route::group(['middleware' => 'auth'], function() {
+    Route::group(['middleware' => 'role:candidate', 'prefix' => 'candidate', 'as' => 'candidate.'], function() {
+        Route::resource('candidate', \App\Http\Controllers\Candidates\candidateController::class);
+    });
+    Route::group(['middleware' => 'role:recuiter', 'prefix' => 'recuiter', 'as' => 'recuiter.'], function() {
+        Route::resource('recuiter', \App\Http\Controllers\Recuiters\recuiterController::class);
+   });
+});
 

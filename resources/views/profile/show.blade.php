@@ -8,6 +8,7 @@
     <div>
         <div class="max-w-7xl mx-auto py-10 sm:px-6 lg:px-8">
             @if (Laravel\Fortify\Features::canUpdateProfileInformation())
+            @if(auth()->user()->role_id==2)
                 <table class="table-fixed border-collapse rounded-lg overflow-hidden w-full shadow" >
                     <div class="pb-3 text-lg font-medium text-gray-900">
                         <h3>My Offers</h3>
@@ -70,6 +71,7 @@
 
                     </tbody>
                   </table>
+                  @endif
                 <x-section-border />
             @endif
             @if (Laravel\Fortify\Features::canUpdateProfileInformation())

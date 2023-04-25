@@ -105,17 +105,13 @@ public function update(Request $request, Cv $cv)
     if ($cv->user_id !== auth()->user()->id) {
         return redirect()->back()->withErrors(['You do not have permission to update this CV.']);
     }
-    if ($cv->image) {
-        $image_path = public_path('uploads/' . $cv->image);
-        if (file_exists($image_path)) {
-            unlink($image_path);
-        }
-    }
+    
     if($request->has('image')){
         $file=$request->image;
         $image_name = time().'_'.$file->getClientOriginalName();
-        $file->move(public_path('uploads') ,$image_name);
-        $cv->image=$image_name;
+        $file->move(public_path('uploads'),$image_name);
+        unlink(public_path('uploads').'/'.$cv->image);
+        $cv->image= $image_name;
     }
 
     $cv->name = $validatedData['name'];

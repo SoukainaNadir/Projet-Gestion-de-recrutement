@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\JobRequest;
 use App\Models\Job;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 
@@ -28,7 +29,8 @@ class FindjobController extends Controller
     return view('offers.show', compact('offer'));
 }
 
-    public function store(JobRequest $request){
+    public function store(JobRequest $request):RedirectResponse
+    {
         if($request->has('image')){
             $file=$request->image;
             $image_name = time().'_'.$file->getClientOriginalName();

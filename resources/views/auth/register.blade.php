@@ -6,9 +6,8 @@
 
         <x-validation-errors class="mb-4" />
 
-        <form method="POST" action="{{ route('register')}}" >
+        <form method="POST" action="{{ route('register')}}" x-data="{role_id:1}" >
             @csrf
-
             <div class="mt-4">
                 <x-label for="name" value="{{ __('Name') }}" />
                 <x-input id="name" class="block mt-1 w-full" type="text" name="name" :value="old('name')" required autofocus autocomplete="name" />
@@ -28,6 +27,26 @@
                 <x-label for="password_confirmation" value="{{ __('Confirm Password') }}" />
                 <x-input id="password_confirmation" class="block mt-1 w-full" type="password" name="password_confirmation" required autocomplete="new-password" />
             </div>
+            <div class="mt-4">
+                <x-label for="role_id" value="{{ __('Register as:') }}" />
+                <select name="role_id" x-model="role_id" class="block mt-1 w-full border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm">
+                    <option value="1">Candidate</option>
+                    <option value="2">Recruiter</option>
+                </select>
+            </div>
+            <div class="mt-4" x-show="role_id==1">
+                <x-label for="birth_date" value="{{ __('Birth Date') }}" />
+                <x-input id="birth_date" class="block mt-1 w-full" type="date" name="birth_date" :value="old('birth_date')"  />
+            </div>
+            <div class="mt-4" x-show="role_id==2">
+                <x-label for="company_name" value="{{ __('Company Name') }}" />
+                <x-input id="company_name" class="block mt-1 w-full" type="text" name="company_name" :value="old('company_name')"  />
+            </div>
+            
+            <div class="mt-4" x-show="role_id==2">
+                <x-label for="phone_number" value="{{ __('Phone Number') }}" />
+                <x-input id="phone_number" class="block mt-1 w-full" type="text" name="phone_number" :value="old('phone_number')" />
+            </div>          
 
             @if (Laravel\Jetstream\Jetstream::hasTermsAndPrivacyPolicyFeature())
                 <div class="mt-4">

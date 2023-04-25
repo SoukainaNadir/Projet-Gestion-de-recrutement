@@ -16,6 +16,7 @@
                         {{ __('Accueil') }}
                     </x-nav-link>
                 </div>
+                @if(auth()->user()->role_id==1)
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
                     <x-nav-link href="{{ route('cv.show') }}" :active="request()->routeIs('home')">
                         {{ __('My Cv') }}
@@ -26,6 +27,7 @@
                         {{ __('My Cover letter') }}
                     </x-nav-link>
                 </div>
+                @endif
             </div>
 
             <div class="hidden sm:flex sm:items-center sm:ml-6">

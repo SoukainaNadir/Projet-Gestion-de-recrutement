@@ -54,6 +54,7 @@
                             </p>
                         </div>
                         <div class="mt-8">
+                            
                         <a href="{{ route('offer.show',$offer->slug) }}" class="inline-block bg-[#0081C9] hover:bg-[#3AB4F2]  text-white py-2 px-4 rounded-lg">More details</a>
                         </div>
 
@@ -106,7 +107,7 @@
         alertPanel.classList.add('hidden');
         });
 
-        
+
 
     </script>
 @endsection
