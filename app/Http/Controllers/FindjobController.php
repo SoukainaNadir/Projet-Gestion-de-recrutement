@@ -7,7 +7,7 @@ use App\Models\ApplyForJob;
 use App\Models\Job;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Response;
 use Illuminate\Support\Str;
 
 class FindjobController extends Controller
@@ -139,9 +139,21 @@ class FindjobController extends Controller
 
 public function jobApplicants()
 {
-
     $apply_for_jobs=ApplyForJob::all();
     return view('candidates',compact('apply_for_jobs'));
-
 }
+
+public function downloadCv($id)
+{
+    $CVfile = ApplyForJob::where('id', $id)->first();
+    $filepath = public_path("storage/cvs/{$CVfile->CVfile}");
+    return response()->download($filepath);
+}
+public function downloadCl($id)
+{
+    $CoverLetterfile = ApplyForJob::where('id', $id)->first();
+    $filepath = public_path("storage/cvs/{$CoverLetterfile->CoverLetterfile}");
+    return response()->download($filepath);
+}
+
 }
