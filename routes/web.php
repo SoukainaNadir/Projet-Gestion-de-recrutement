@@ -51,7 +51,8 @@ Route::post('/coverletters', 'CoverletterController@store')->name('coverletters.
 Route::get('/coverletters/{coverletter}/edit', 'CoverletterController@edit')->name('coverletters.edit');
 Route::put('/coverletters/{coverletter}', 'CoverletterController@update')->name('coverletters.update');
 Route::delete('/coverletters/{coverletter}', 'CoverletterController@delete')->name('coverletters.delete');
-
+//manage offers
+Route::get('/profile/manageOffers/{offer}','FindjobController@manageOffers')->name('manageOffers');
 //routes for Apply for job
 Route::post('/apply/job/save','FindjobController@applyJobSave')->name('job.save');
 
@@ -61,6 +62,8 @@ Route::get('/job/applicants','FindjobController@jobApplicants')->name('jobApplic
 Route::get('/Cv/download/{id}','FindjobController@downloadCv')->name('downloadCv');
 Route::get('/Cl/download/{id}','FindjobController@downloadCl')->name('downloadCl');
 
+//search
+Route::get('/search','FindjobController@search')->name('search');
 
 
 Route::middleware([

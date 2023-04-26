@@ -21,16 +21,24 @@
             <nav class="container mx-auto px-10 py-4">
                 <div class="flex items-center justify-between">
                     <div>
-                        <img src="/images/Logo.png" alt="JobMatchCv" class="h-12">
+                        <a href="{{ url('/') }}"><img href="" src="/images/Logo.png" alt="JobMatchCv" class="h-12"></a>
                     </div>
                     <div class="flex items-center">
                         <div class="hidden md:block " style="display: flex; align-items :center">
                             <a href="{{ url('/') }}" class="text-gray-800 hover:text-gray-600 px-3 py-2 rounded-md text-lg font-medium">Home</a>
-                            <a href="#" class="text-gray-800 hover:text-gray-600 px-3 py-2 rounded-md text-lg font-medium">Candidates</a>
                             <a href="{{ url('/Findjob') }}" class="text-gray-800 hover:text-gray-600 px-3 py-2 rounded-md text-lg font-medium">Jobs</a>
+                            @if (auth()->user())
+                                @if(auth()->user()->role_id==2)
+                                <a href="{{ url('/profile/manageOffers') }}" class="text-gray-800 hover:text-gray-600 px-3 py-2 rounded-md text-lg font-medium">My Offers</a>
+                                <a href="{{ route('offer.create') }}" class="text-gray-800 hover:text-gray-600 px-3 py-2 rounded-md text-lg font-medium">Add a job</a>
+                                @endif
+                            @endif
+                            @if (auth()->user())
+                                @if(auth()->user()->role_id==1)
+                                <a href="{{ url('/AdduploadCV') }}" class="text-gray-800 hover:text-gray-600 px-3 py-2 rounded-md text-lg font-medium">Personal informations</a>
+                                @endif
+                            @endif
                             @if(auth()->check())
-                            <a href="{{ url('/AdduploadCV') }}" class="text-gray-800 hover:text-gray-600 px-3 py-2 rounded-md text-lg font-medium">Upload
-                            </a>
                             <!-- This is an example component -->
                             <div class="max-w-lg mx-auto">
                                 <button class="block h-12 w-12 rounded-full overflow-hidden border-2 border-gray-600 focus:outline-none focus:bg-white " type="button" data-dropdown-toggle="dropdown"><img class="h-full w-full object-cover" src="{{ Auth::user()->profile_photo_url }}" alt="{{ Auth::user()->name }}" /></button>
@@ -48,7 +56,6 @@
                                 </div>
                             </div>
                             <script src="https://unpkg.com/@themesberg/flowbite@latest/dist/flowbite.bundle.js"></script>
-
                             @else
                             <a href="{{ url('/register') }}" class="text-gray-800 hover:text-gray-600 px-3 py-2 rounded-md text-lg font-medium">Upload your CV</a>
                             <a href="{{url('/login') }}" class="text-gray-800 hover:text-gray-600 px-3 py-2 rounded-md text-lg font-medium ">Sign Up</a>

@@ -7,6 +7,7 @@ use App\Models\ApplyForJob;
 use App\Models\Job;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Response;
 use Illuminate\Support\Str;
 
@@ -155,5 +156,22 @@ public function downloadCl($id)
     $filepath = public_path("storage/cvs/{$CoverLetterfile->CoverLetterfile}");
     return response()->download($filepath);
 }
+
+public function manageOffers()
+{
+    return view('manage_offers');
+}
+
+public function search(Request $request)
+{
+    $searchTerm = $request->input('searchTerm');
+
+    $results = DB::table('jobs')
+                ->where('title', 'like', '%'.$searchTerm.'%')
+                ->get();
+
+    return view('search', ['results' => $results]);
+}
+
 
 }

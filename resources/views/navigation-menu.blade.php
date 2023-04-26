@@ -16,6 +16,15 @@
                         {{ __('Accueil') }}
                     </x-nav-link>
                 </div>
+
+                @if(auth()->user()->role_id==2)
+                <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                    <x-nav-link href="{{ route('manageOffers') }}" :active="request()->routeIs('home')">
+                        {{ __('Manage Offers') }}
+                    </x-nav-link>
+                </div>
+                @endif
+
                 @if(auth()->user()->role_id==1)
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
                     <x-nav-link href="{{ route('cv.show') }}" :active="request()->routeIs('home')">

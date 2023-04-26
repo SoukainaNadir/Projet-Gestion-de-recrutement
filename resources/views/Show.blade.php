@@ -42,6 +42,12 @@
                     <p class="mt-1 text-gray-900">
                         {{ Str::limit($offer->description)}}
                     </p>
+                    <div class=" mt-4 flex items-center space-x-2">
+                        <svg class="w-4 h-4 text-gray-500 fill-current " xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-2 h-2">
+                            <path strokeLinecap="round" strokeLinejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z" />
+                          </svg>
+                        <span class="text-gray-500 text-sm">{{ $offer->created_at->diffForHumans()}}</span>
+                    </div>
                     <h6 class="text-gray-400 pt-3">Added by : {{ $offer->user ? $offer->user->name : null }}</h6>
                 </div>
             </div>

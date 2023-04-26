@@ -25,12 +25,17 @@
             <div class="text-center">
                 <h1 class="text-4xl font-bold text-gray-900 mb-12">Job Offers</h1>
             </div>
-            <form class="flex justify-center items-center m-6">
+            <form action="" method="" class="flex justify-center items-center m-6">
                 <input type="text" class=" w-80 px-4 py-2 border border-gray-400 rounded-md mr-2" placeholder="Search jobs">
                 <button type="submit" class="bg-[#0081C9] hover:bg-[#3AB4F2] text-white px-4 py-2 rounded-md">Search</button>
             </form>
                 <div class="container">
                 @foreach ($offers as $offer)
+                @php
+                    $date=$offer->created_at;
+                    $date = Carbon\Carbon::parse($date);
+                    $elapsed=$date->diffForHumans();
+                @endphp
                 <div class=" container mx-auto bg-white rounded-xl shadow-md overflow-hidden my-16">
                 <div class="md:flex ">
                     <div class="md:flex-shrink-0">
@@ -53,6 +58,18 @@
                                 {{ Str::limit($offer->description)}}
                             </p>
                         </div>
+                        <div class=" mt-4 flex items-center space-x-2">
+                            <svg class="w-4 h-4 text-gray-500 fill-current " xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-2 h-2">
+                                <path strokeLinecap="round" strokeLinejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z" />
+                              </svg>
+                            <span class="text-gray-500 text-sm">{{ $offer->created_at->diffForHumans()}}</span>
+                        </div>
+
+
+
+
+
+
 
                         <div class="mt-8">
 
