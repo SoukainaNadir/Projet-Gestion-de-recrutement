@@ -15,10 +15,10 @@ return new class extends Migration
             $table->id();
             $table->string('title');
             $table->string('slug');
-            $table->text('description');
-            $table->text('location');
-            $table->integer('salary');
-            $table->enum('jobtype', ['Part-time', 'Contract','full-time','Internship','Temporary']);
+            $table->text('description')->nullable();
+            $table->text('location')->nullable();
+            $table->integer('salary')->nullable();
+            $table->string('jobtype')->nullable();
             $table->string('image');
             $table->timestamps();
         });

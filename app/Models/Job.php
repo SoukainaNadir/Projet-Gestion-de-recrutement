@@ -9,7 +9,8 @@ class Job extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['title','description','slug','location','salary','jobetype','image','user_id'];
+    protected $fillable =
+    ['title','description','slug','location','salary','jobetype','image','user_id','start_date','expired_date'];
     public function getRouteKeyName(){
         return 'slug';
     }

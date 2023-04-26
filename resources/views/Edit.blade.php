@@ -59,13 +59,22 @@
                     </div>
                     <div class="mt-4">
                         <label class="block text-gray-700 font-bold mb-2">Job Type</label>
-                        <select name="jobtype" id="jobtype" class="w-full border-gray-300 rounded-md py-2 px-3 focus:outline-none focus:border-blue-400" required>
-                            <option value="part-time">Part-time</option>
-                            <option value="contract">Contract</option>
-                            <option value="internship">Internship</option>
-                            <option value="full-time">Full-time</option>
-                            <option value="temporary">Temporary</option>
+                        <select name="jobtype" class="w-full border-gray-300 rounded-md py-2 px-3 focus:outline-none focus:border-blue-400" required>
+                            <option selected disabled>Select Job Type</option>
+                            <option value="part-time" {{ ($offer->jobtype == 'part-time') ? 'selected' : '' }}>Part-time</option>
+                            <option value="contract" {{ ($offer->jobtype == 'contract') ? 'selected' : '' }}>Contract</option>
+                            <option value="internship" {{ ($offer->jobtype == 'internship') ? 'selected' : '' }}>Internship</option>
+                            <option value="full-time" {{ ($offer->jobtype == 'full-time') ? 'selected' : '' }}>Full-time</option>
+                            <option value="temporary" {{ ($offer->jobtype == 'temporary') ? 'selected' : '' }}>Temporary</option>
                         </select>
+
+                    </div>
+                    <div class="mt-4">
+                        <label for="start_date">Start Date</label>
+                        <input type="date" id="start_date" name="start_date"  value ="{{ $offer->start_date }}" required >
+
+                        <label for="start_date">Expired Date</label>
+                        <input type="date" id="expired_date" name="expired_date"  value ="{{ $offer->expired_date }}" required >
                     </div>
                     <div class="my-4 float-right">
                         <button onclick ="displayError" type="submit" class="bg-[#0081C9] hover:bg-[#3AB4F2] text-white font-bold py-3 px-8 rounded">

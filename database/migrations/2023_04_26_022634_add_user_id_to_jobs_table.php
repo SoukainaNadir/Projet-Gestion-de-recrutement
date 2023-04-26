@@ -11,9 +11,9 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::table('cvs', function (Blueprint $table) {
+        Schema::table('jobs', function (Blueprint $table) {
             //
-            $table->string('cv_path')->nullable();
+            $table->unsignedBigInteger('user_id');
         });
     }
 
@@ -22,9 +22,9 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::table('cvs', function (Blueprint $table) {
+        Schema::table('jobs', function (Blueprint $table) {
             //
-            $table->dropColumn('cv_path');
+            $table->dropColumn('user_id');
         });
     }
 };

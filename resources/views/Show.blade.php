@@ -44,6 +44,12 @@
                     </p>
                     <h6 class="text-gray-400 pt-3">Added by : {{ $offer->user ? $offer->user->name : null }}</h6>
                 </div>
+            </div>
+            <div class="p-8 w-64">
+                <p class="font-semibold text-gray-600"><i class="fa fa-calendar text-[#0081C9] " aria-hidden="true"></i> Start Date: {{ $offer->start_date }} </p>
+                <p class="font-semibold text-gray-600"><i class="fa fa-calendar text-[#0081C9]" aria-hidden="true"></i> Expired Date: {{ $offer->expired_date }} </p>
+            </div>
+
                 <div class="mt-8">
                 @if (auth()->user())
                     @if(auth()->user()->role_id==1)

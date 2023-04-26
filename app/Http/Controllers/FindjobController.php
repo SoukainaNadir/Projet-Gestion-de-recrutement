@@ -7,6 +7,7 @@ use App\Models\ApplyForJob;
 use App\Models\Job;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
 
 class FindjobController extends Controller
@@ -46,6 +47,8 @@ class FindjobController extends Controller
             'salary'=>$request->salary,
             'jobtype'=>$request->jobtype,
             'image'=> $image_name,
+            'start_date'=>$request->start_date,
+            'expired_date'=>$request->expired_date,
             'user_id'=>auth()->user()->id
         ]);
 
@@ -71,6 +74,7 @@ class FindjobController extends Controller
             unlink(public_path('uploads').'/'.$offer->image);
             $offer->image= $image_name;
         }
+
         $offer->update([
             'title'=>$request->title,
             'description'=>$request->description,
@@ -79,8 +83,11 @@ class FindjobController extends Controller
             'salary'=>$request->salary,
             'jobtype'=>$request->jobtype,
             'image'=> $offer->image,
+            'start_date'=>$offer->start_date,
+            'expired_date'=>$offer->expired_date,
             'user_id'=>auth()->user()->id
         ]);
+
         return redirect()->route('offers')->with([
             'success' =>'Congratulations! Your job offer has been updated successfully'
         ]);
@@ -128,10 +135,13 @@ class FindjobController extends Controller
 
     return redirect()->back()->with('success', 'Your job application has been submitted successfully.');
 }
+}
 
+public function jobApplicants()
+{
 
-
-
+    $apply_for_jobs=ApplyForJob::all();
+    return view('candidates',compact('apply_for_jobs'));
 
 }
 }

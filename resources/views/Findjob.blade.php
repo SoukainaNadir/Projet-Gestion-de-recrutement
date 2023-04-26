@@ -37,8 +37,8 @@
                         <img class="h-48 w-full object-cover md:w-48" src="{{ asset('./uploads/'.$offer->image) }}" alt="Job">
                     </div>
                     <div class="p-8">
-                        <p class="uppercase tracking-wide text-sm text-indigo-500 font-semibold"> Type: {{ $offer->jobtype }}</p>
-                        <a href="#" class="block mt-1 text-lg leading-tight font-medium text-black hover:underline">{{ $offer->title }}</a>
+                        <p for="jobtype" class="uppercase tracking-wide text-sm text-indigo-500 font-semibold"> Type: {{ $offer->jobtype }}</p>
+                        <a href="{{ route('offer.show',$offer->slug) }}" class="block mt-1 text-lg leading-tight font-medium text-black hover:underline">{{ $offer->title }}</a>
                         <div class="mt-4">
                             <h1 class="text-gray-600 font-semibold">Location:</h1>
                             <div class="mt-1 text-gray-900">{{ Str::limit($offer->location)}}</div>
@@ -53,19 +53,20 @@
                                 {{ Str::limit($offer->description)}}
                             </p>
                         </div>
+
                         <div class="mt-8">
-                            
+
                         <a href="{{ route('offer.show',$offer->slug) }}" class="inline-block bg-[#0081C9] hover:bg-[#3AB4F2]  text-white py-2 px-4 rounded-lg">More details</a>
                         </div>
-
+                    </div>
+                    <div class="p-8 ml-24">
+                        <p class="font-semibold text-gray-600"><i class="fa fa-calendar text-[#0081C9] " aria-hidden="true"></i> Start Date: {{ $offer->start_date }}</p>
+                        <p class="font-semibold text-gray-600"><i class="fa fa-calendar text-[#0081C9]" aria-hidden="true"></i> Expired Date: {{ $offer->expired_date }}</p>
                     </div>
                 </div>
             </div>
-
                 @endforeach
-
                 </div>
-
             <div class="flex justify-center ">
                 <div class="flex justify-center items-center mt-8">
                     <div class="flex">
@@ -74,14 +75,6 @@
                         @else
                             <a href="{{ $offers->previousPageUrl() }}" class="border border-gray-300 rounded-l px-3 py-2 bg-gray-200 hover:bg-gray-300">&laquo;</a>
                         @endif
-
-                        {{-- @foreach ($offers as $offer)
-                            @if ($offer->url)
-                                <a href="{{ $offer->url }}" class="{{ $offer->active ? 'border-blue-500 bg-blue-500 text-white' : 'border-gray-300 hover:bg-gray-200' }} px-3 py-2 border">{{ $offer->label }}</a>
-                            @else
-                                <span class="border border-gray-300 px-3 py-2 cursor-not-allowed">{{ $offer->label }}</span>
-                            @endif
-                        @endforeach --}}
 
                         @if ($offers->hasMorePages())
                             <a href="{{ $offers->nextPageUrl() }}" class="border border-gray-300 rounded-r px-3 py-2 bg-gray-200 hover:bg-gray-300">&raquo;</a>

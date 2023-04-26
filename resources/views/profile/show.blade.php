@@ -19,7 +19,8 @@
                         <th class="px-4 py-2 w-1/4">Title</th>
                         <th class="px-4 py-2 w-1/4">Description</th>
                         <th class="px-4 py-2 w-1/4">Location</th>
-                        <th class="px-4 py-2 w-1/4"></th>
+                        <th class="px-4 py-2 w-1/4">Applicants</th>
+                        <th class="px-4 py-2 w-1/4">Actions</th>
                     </tr>
                     </thead>
                     <tbody class="bg-white">
@@ -28,6 +29,14 @@
                                 <td class="px-8 py-4">{{ $offer->title }}</td>
                                 <td class="px-8 py-4">{{ Str::limit($offer->description) }}</td>
                                 <td class="px-8 py-4">{{ $offer->location }}</td>
+                                @php
+                                    $apply=DB::table('apply_for_jobs')->where('title',$offer->title)->count();
+                                @endphp
+                                <td class="px-8 py-4">
+                                    <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+                                        <a href="{{ route('jobApplication'}}"> <span class="mr-2">{{ $apply }}</span>Candidates</a>
+                                    </button>
+                                </td>
                                 <td class="px-8 py-4 flex">
                                     <div class="flex flex-col space-y-1">
                                         <a href="{{ route('offer.edit',$offer->slug) }}" class=" bg-green-600 hover:bg-green-700 inline-block px-2 py-1 cursor-pointer text-white rounded">

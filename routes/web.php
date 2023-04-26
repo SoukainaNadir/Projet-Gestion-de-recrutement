@@ -55,6 +55,10 @@ Route::delete('/coverletters/{coverletter}', 'CoverletterController@delete')->na
 //routes for Apply for job
 Route::post('/apply/job/save','FindjobController@applyJobSave')->name('job.save');
 
+//route for applicants
+
+Route::get('/job/applicants','FindjobController@jobApplicants')->name('jobApplication');
+
 Route::middleware([
     'auth:sanctum',
     config('jetstream.auth_session'),
