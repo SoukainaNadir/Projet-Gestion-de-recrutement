@@ -52,12 +52,12 @@ Route::get('/coverletters/{coverletter}/edit', 'CoverletterController@edit')->na
 Route::put('/coverletters/{coverletter}', 'CoverletterController@update')->name('coverletters.update');
 Route::delete('/coverletters/{coverletter}', 'CoverletterController@delete')->name('coverletters.delete');
 //manage offers
-Route::get('/profile/manageOffers/{offer}','FindjobController@manageOffers')->name('manageOffers');
+Route::get('/profile/manageOffers','FindjobController@manageOffers')->name('manageOffers');
 //routes for Apply for job
 Route::post('/apply/job/save','FindjobController@applyJobSave')->name('job.save');
 
 //route for applicants
-Route::get('/job/applicants','FindjobController@jobApplicants')->name('jobApplication');
+Route::get('/job/applicants/{title}','FindjobController@jobApplicants')->name('jobApplication');
 //route for downoald the file
 Route::get('/Cv/download/{id}','FindjobController@downloadCv')->name('downloadCv');
 Route::get('/Cl/download/{id}','FindjobController@downloadCl')->name('downloadCl');

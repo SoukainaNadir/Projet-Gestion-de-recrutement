@@ -5,7 +5,7 @@
         {{ $logo }}
         </div>
 
-        <div class=" py-8 px-4 sm:px-10">
+        <div class=" pb-8 px-4 sm:px-10">
             {{ $slot }}
         </div>
 

@@ -26,14 +26,14 @@
                 @foreach (auth()->user()->offers as $offer )
                     <tr>
                         <td class="px-8 py-4">{{ $offer->title }}</td>
-                        <td class="px-8 py-4">{{ Str::limit($offer->description) }}</td>
+                        <td class="px-8 py-4">{{ Str::limit($offer->description,50) }}</td>
                         <td class="px-8 py-4">{{ $offer->location }}</td>
                         @php
-                            $apply=DB::table('apply_for_jobs')->where('title',$offer->title)->count();
+                            $apply=DB::table('apply_for_jobs')->where('title',$offer->title)->where('title','Nisi in unde ut aut')->count();
                         @endphp
                         <td class="px-8 py-4">
                             <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
-                                <a href="{{ route('jobApplication') }}"> <span class="mr-2">{{ $apply }}</span>Candidates</a>
+                                <a href="{{ route('jobApplication',$offer->title) }}"> <span class="mr-2">{{ $apply }}</span>Candidates</a>
                             </button>
                         </td>
                         <td class="px-8 py-4 flex">

@@ -14,6 +14,10 @@ class Job extends Model
     public function getRouteKeyName(){
         return 'slug';
     }
+    public function applications()
+{
+    return $this->hasMany(ApplyForJob::class);
+}
 
     public function user()
     {

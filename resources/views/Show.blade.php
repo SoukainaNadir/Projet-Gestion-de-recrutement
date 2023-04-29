@@ -90,13 +90,12 @@
                                     <label for="CVfile" class="bg-green-500 text-gray-200 px-4 py-2 rounded-md cursor-pointer">Upload new</label>
                                     <input type="file" id="CVfile" name="CVfile" class="hidden">
                                     <input type="text" id="cv-file-name" name="cv-file-name" class="border-gray-300 border-solid border-2 px-4 py-2 rounded-lg focus:outline-none focus:border-gary-500" readonly>
-
                                   </div>
                                   <p class="text-sm text-gray-500">If you don't have a CV, <span class="underline"><a href="{{ route('cv.create') }}" class="cursor-pointer">Create one!</a></span></p>
                                 </div>
                                 <button type="submit" class="bg-[#0081C9] text-white px-4 py-2 rounded-md">Apply</button>
                               </form>
-                      </div>
+                                </div>
                       <div id="blur-overlay" class="fixed z-0 top-0 left-0 w-screen h-screen bg-gray-600 bg-opacity-80 blur hidden"></div>
 
 
@@ -202,6 +201,7 @@
     alertPanel1.classList.add('hidden');
     });
 </script>
+
 
 @endsection
 

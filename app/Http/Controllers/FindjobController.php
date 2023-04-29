@@ -113,7 +113,9 @@ class FindjobController extends Controller
         'CVfile' => 'nullable|file|mimes:pdf',
         'ExCv' => 'nullable|string',
         'ExCl' => 'nullable|string',
+
     ]);
+
     $fileNameCv = '';
     $fileNameCl = '';
     if ($request->hasFile('CVfile')) {
@@ -132,15 +134,16 @@ class FindjobController extends Controller
     $jobApplication->title = $validatedData['title'];
     $jobApplication->CVfile = $fileNameCv;
     $jobApplication->CoverLetterfile = $fileNameCl;
+    $jobApplication->user_id = auth()->user()->id;
     $jobApplication->save();
 
     return redirect()->back()->with('success', 'Your job application has been submitted successfully.');
 }
 }
 
-public function jobApplicants()
+public function jobApplicants($title)
 {
-    $apply_for_jobs=ApplyForJob::all();
+    $apply_for_jobs=DB::table('apply_for_jobs')->get();
     return view('candidates',compact('apply_for_jobs'));
 }
 
@@ -162,16 +165,6 @@ public function manageOffers()
     return view('manage_offers');
 }
 
-public function search(Request $request)
-{
-    $searchTerm = $request->input('searchTerm');
-
-    $results = DB::table('jobs')
-                ->where('title', 'like', '%'.$searchTerm.'%')
-                ->get();
-
-    return view('search', ['results' => $results]);
-}
 
 
 }

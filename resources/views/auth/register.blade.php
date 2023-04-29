@@ -42,11 +42,11 @@
                 <x-label for="company_name" value="{{ __('Company Name') }}" />
                 <x-input id="company_name" class="block mt-1 w-full" type="text" name="company_name" :value="old('company_name')"  />
             </div>
-            
+
             <div class="mt-4" x-show="role_id==2">
                 <x-label for="phone_number" value="{{ __('Phone Number') }}" />
                 <x-input id="phone_number" class="block mt-1 w-full" type="text" name="phone_number" :value="old('phone_number')" />
-            </div>          
+            </div>
 
             @if (Laravel\Jetstream\Jetstream::hasTermsAndPrivacyPolicyFeature())
                 <div class="mt-4">
@@ -69,7 +69,6 @@
                 <a class="underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" href="{{ route('login') }}">
                     {{ __('Already registered?') }}
                 </a>
-
                 <x-button class="ml-4">
                     {{ __('Register') }}
                 </x-button>
