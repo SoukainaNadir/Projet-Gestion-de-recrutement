@@ -134,6 +134,7 @@ class FindjobController extends Controller
     $jobApplication->title = $validatedData['title'];
     $jobApplication->CVfile = $fileNameCv;
     $jobApplication->CoverLetterfile = $fileNameCl;
+    $validatedData['slug'] = Str::slug($validatedData['title']);
     $jobApplication->user_id = auth()->user()->id;
     $jobApplication->save();
 
@@ -143,7 +144,8 @@ class FindjobController extends Controller
 
 public function jobApplicants($title)
 {
-    $apply_for_jobs=DB::table('apply_for_jobs')->get();
+
+    $apply_for_jobs=DB::table('apply_for_jobs')->where('title',$title)->get();
     return view('candidates',compact('apply_for_jobs'));
 }
 
