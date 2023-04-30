@@ -57,7 +57,6 @@
                         <label for="salary" class="block text-gray-700 font-bold mb-2">Salary:</label>
                         <input type="text" id="salary" name="salary" class="border border-gray-400 p-2 w-full" value ="{{ $offer->salary }}">
                     </div>
-                    </div>
                     <div class="mt-4">
                         <label for="start_date">Start Date</label>
                         <input type="date" id="start_date" name="start_date"  value ="{{ $offer->start_date }}" required >
