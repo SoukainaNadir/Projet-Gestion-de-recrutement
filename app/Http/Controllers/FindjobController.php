@@ -167,6 +167,18 @@ public function manageOffers()
     return view('manage_offers');
 }
 
+public function search(Request $request)
+{
+
+    $search = $request->input('search');
+
+    $offers = Job::query()
+        ->where('title', 'LIKE', "{$search}%")
+        ->get();
+
+    return view('search',['offers' => $offers, 'searchTerm' => $search]);
+}
 
 
 }
+

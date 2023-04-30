@@ -63,7 +63,7 @@ Route::get('/Cv/download/{id}','FindjobController@downloadCv')->name('downloadCv
 Route::get('/Cl/download/{id}','FindjobController@downloadCl')->name('downloadCl');
 
 //search
-Route::get('/search','FindjobController@search')->name('search');
+Route::get('/search/','FindjobController@search')->name('search');
 
 
 Route::middleware([

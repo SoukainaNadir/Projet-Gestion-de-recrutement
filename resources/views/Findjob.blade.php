@@ -25,10 +25,11 @@
             <div class="text-center">
                 <h1 class="text-4xl font-bold text-gray-900 mb-12">Job Offers</h1>
             </div>
-            <form action="" method="" class="flex justify-center items-center m-6">
-                <input type="text" class=" w-80 px-4 py-2 border border-gray-400 rounded-md mr-2" placeholder="Search jobs">
+            <form action="{{ route('search') }}" method="GET" class="flex justify-center items-center m-6">
+                <input type="text" name="search" class=" w-80 px-4 py-2 border border-gray-400 rounded-md mr-2" placeholder="Search jobs" required/>
                 <button type="submit" class="bg-[#0081C9] hover:bg-[#3AB4F2] text-white px-4 py-2 rounded-md">Search</button>
             </form>
+
                 <div class="container">
                 @foreach ($offers as $offer)
                 @php
