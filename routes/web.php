@@ -29,7 +29,7 @@ Route::get('/AdduploadCV', function () {
     return view('AdduploadCV');
 })->name('AdduploadCV');
 
-
+ 
 Route::get('/showCv','addCvController@index')->name('cv.show');
 Route::get('/successCv', function () {
     return view('successCv');

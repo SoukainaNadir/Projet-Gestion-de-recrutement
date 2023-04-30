@@ -7,10 +7,10 @@
 @section('content')
 <body class="bg-gray-200 font-Inconsolata ">
     <div class="justify-center items-center my-8 ">
-        <div class="max-w-lg w-full mx-auto p-8 bg-white rounded-lg shadow-lg ">
+        <div class="max-w-lg w-full mx-auto p-8  bg-white rounded-lg shadow-lg ">
           <h1 class="text-2xl font-bold mb-5">Edit Your CV</h1>
           @if ($errors->any())
-            <div id="error-msg" class="max-w-4xl mx-auto bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative" role="alert">
+            <div id="error-msg" class="max-w-4xl mx-auto mb-8 bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative" role="alert">
                 <strong class="font-bold">Error!</strong>
                 <ul class="list-disc pl-5">
                     @foreach ($errors->all() as $error)

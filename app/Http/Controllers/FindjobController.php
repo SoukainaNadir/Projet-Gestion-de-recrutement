@@ -61,7 +61,7 @@ class FindjobController extends Controller
 
     public function edit($slug){
         $offer = Job::where('slug',$slug)->first();
-        return view ('edit')->with([
+        return view ('Edit')->with([
             'offer' =>$offer
         ]);
     }
@@ -179,6 +179,13 @@ public function search(Request $request)
     return view('search',['offers' => $offers, 'searchTerm' => $search]);
 }
 
+
+public function jobType(){
+    $jobtype=DB::table('jobType')->get();
+    dd($jobtype);
+    return view('Edit',compact('jobtype'));
+
+}
 
 }
 

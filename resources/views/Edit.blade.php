@@ -57,17 +57,6 @@
                         <label for="salary" class="block text-gray-700 font-bold mb-2">Salary:</label>
                         <input type="text" id="salary" name="salary" class="border border-gray-400 p-2 w-full" value ="{{ $offer->salary }}">
                     </div>
-                    <div class="mt-4">
-                        <label class="block text-gray-700 font-bold mb-2">Job Type</label>
-                        <select name="jobtype" class="w-full border-gray-300 rounded-md py-2 px-3 focus:outline-none focus:border-blue-400" required>
-                            <option selected disabled>Select Job Type</option>
-                            <option value="part-time" {{ ($offer->jobtype == 'part-time') ? 'selected' : '' }}>Part-time</option>
-                            <option value="contract" {{ ($offer->jobtype == 'contract') ? 'selected' : '' }}>Contract</option>
-                            <option value="internship" {{ ($offer->jobtype == 'internship') ? 'selected' : '' }}>Internship</option>
-                            <option value="full-time" {{ ($offer->jobtype == 'full-time') ? 'selected' : '' }}>Full-time</option>
-                            <option value="temporary" {{ ($offer->jobtype == 'temporary') ? 'selected' : '' }}>Temporary</option>
-                        </select>
-
                     </div>
                     <div class="mt-4">
                         <label for="start_date">Start Date</label>
@@ -75,6 +64,14 @@
 
                         <label for="start_date">Expired Date</label>
                         <input type="date" id="expired_date" name="expired_date"  value ="{{ $offer->expired_date }}" required >
+                    </div>
+                    <div class="mt-4">
+                        <select name ="jobtype" id="jobtype" class="block appearance-none w-full bg-white border border-gray-400 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline">
+                            <option value="" disabled selected>Select job type</option>
+                            <option value="full-time">Full-time</option>
+                            <option value="part-time">Part-time</option>
+                            <option value="contract">Contract</option>
+                        </select>
                     </div>
                     <div class="my-4 float-right">
                         <button onclick ="displayError" type="submit" class="bg-[#0081C9] hover:bg-[#3AB4F2] text-white font-bold py-3 px-8 rounded">

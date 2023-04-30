@@ -5,14 +5,15 @@
     Job Offers
 @endsection
 @section('content')
-<body class="bg-[#F9AF16] font-Inconsolata">
+<body class="bg-[#F9AF16] font-Inconsolata ">
     <div class="container mx-auto px-8">
-        <h1 class="text-3xl font-semibold mb-4">Search results for "{{ $searchTerm }}"</h1>
+        <h1 class="text-3xl font-semibold mb-4">Search results for "{{$searchTerm }}"</h1>
         @if($offers->isNotEmpty())
-        <div class="bg-white shadow-lg rounded-lg overflow-hidden w-1/3">
-            @foreach($offers as $offer)
-            <div class="md:flex-shrink-0">
-                <img class="bg-cover bg-center h-64 p-4" src="{{ asset('./uploads/'.$offer->image) }}" alt="Job">
+        <div class="flex flex-wrap gap-6">
+          @foreach($offers as $offer)
+          <div class="bg-white shadow-lg rounded-lg overflow-hidden w-[32%]" >
+            <div class="md:flex-shrink-0 flex justify-center">
+              <img class="bg-cover bg-center h-64 p-4" src="{{ asset('./uploads/'.$offer->image) }}" alt="Job">
             </div>
             <div class="p-4">
               <h3 class="font-bold text-xl mb-2">{{ $offer->title }}</h3>
@@ -24,12 +25,15 @@
                 <span class="font-bold text-gray-700">{{ $offer->created_at->format('M d, Y') }}</span>
               </div>
             </div>
-            @endforeach
           </div>
-          @else
-            <p>No jobs found.</p>
+          @endforeach
+        </div>
+        @else
+        <p>No jobs found.</p>
         @endif
+      </div>
 
-    </div>
+
+
 </body>
 @endsection

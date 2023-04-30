@@ -1,7 +1,7 @@
 @extends('master.layout')
 
 @section('title')
-    Cover Letter Page
+    Create Cover Letter
 @endsection
 
 @section('content')

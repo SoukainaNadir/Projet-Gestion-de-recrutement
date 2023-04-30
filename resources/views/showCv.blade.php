@@ -13,7 +13,7 @@
         <h1 class="text-4xl font-bold text-gray-900 mb-12">Your Cv</h1>
     </div>
     @if(session()->has('success'))
-        <div id="error-msg" class="max-w-4xl mx-auto bg-green-100 border border-green-400  px-4 py-3 rounded relative" role="alert">
+        <div id="error-msg" class="max-w-4xl mx-auto mb-4 bg-green-100 border border-green-400  px-4 py-3 rounded relative" role="alert">
             {{ session()->get('success') }}
             <span class="absolute top-0 bottom-0 right-0 px-4 py-3">
                 <svg id="close-button" class=" fill-current h-6 w-6 text-green-500" role="button" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">

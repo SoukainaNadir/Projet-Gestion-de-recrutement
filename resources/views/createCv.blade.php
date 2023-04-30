@@ -1,7 +1,7 @@
 @extends('master.layout')
 
 @section('title')
-    CV Page
+    Create CV 
 @endsection
 
 @section('content')
